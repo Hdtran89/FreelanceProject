@@ -13,5 +13,8 @@
 @interface guidelinesViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *loginOrOutButton;
 - (IBAction)loginOrOutAction:(id)sender;
+@property (weak, nonatomic) IBOutlet UIImageView *logo;
+@property (weak, nonatomic) IBOutlet UIImageView *guideline;
+
 
 @end

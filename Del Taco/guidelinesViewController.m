@@ -9,17 +9,25 @@
 #import "guidelinesViewController.h"
 
 @interface guidelinesViewController ()
-
+    
 @end
 
 @implementation guidelinesViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [Utils setupLogo:self.view];
-    [self loadGuidelines];
+
+    //[Utils setupLogo:self.view];
+   // [self loadGuidelines];
     [self setUpLoginButton];
-    NSLog(@"hi"); 
+    
+    UIImage* imagelogo = [UIImage imageNamed:@"logo"];
+    self.logo.image = imagelogo;
+    
+    UIImage* guide = [UIImage imageNamed:@"guidelines"];
+    self.guideline.image = guide;
+    
+    NSLog(@"hi");
     // Do any additional setup after loading the view.
 }
 
@@ -28,16 +36,26 @@
     // Dispose of any resources that can be recreated.
 }
 
-
 - (void) loadGuidelines {
-    CGFloat xMargin = .35*[Utils getScreenWidth];
-    CGFloat verticalPaddingGuidelines = (50/1136.0)*[Utils getScreenHeight];
-    CGFloat yMarginFromTop = [Utils getYMarginLogo] + [Utils getLogoHeight];
-    CGRect guidelinesRect = CGRectMake(xMargin, yMarginFromTop, [Utils getScreenWidth]-2*xMargin, [Utils getScreenHeight] - 2*verticalPaddingGuidelines - yMarginFromTop);
-    UIImageView *guidelines = [[UIImageView alloc] initWithFrame:guidelinesRect];
-    [guidelines setImage:[UIImage imageNamed:@"guidelines"]];
-    [self.view addSubview:guidelines];
+   // CGFloat xMargin = .35*[Utils getScreenWidth];
+   // CGFloat verticalPaddingGuidelines = (50/1136.0)*[Utils getScreenHeight];
+    //CGFloat yMarginFromTop = [Utils getYMarginLogo] + [Utils getLogoHeight];
+    //CGRect guidelinesRect = CGRectMake(xMargin, yMarginFromTop, [Utils getScreenWidth]-2*xMargin, [Utils getScreenHeight] - 2*verticalPaddingGuidelines - yMarginFromTop);
+    //UIImageView *guidelines = [[UIImageView alloc] initWithFrame:guidelinesRect];
+    //[guidelines setImage:[UIImage imageNamed:@"guidelines"]];
+    //[self.view addSubview:guidelines];
+    
+
+    
+    
+//    self.drinkTextview.text = @"\u2022 Clean all tables, chairs and booths \n \u2022 Clean and stock drink station";
+//    self.floorTextView.text = @"\u2022 Sweep \n \u2022 Spot mop spills \n \u2022 Pick up trash";
+//    self.doorTextView.text = @"\u2022 Open for guest \n \u2022 Clean doors (no fingerprints) \n \u2022 No trash in parking lot / outside area";
+//    self.restroomTextView.text = @"\u2022 Keep clean (empty trash, sink, floor, toilet, and mirror) \n \u2022 Stock (toilet paper, toilet seat covers, soap & paper towels)";
+//    self.tabletextView.text = @"\u2022 Smile \n \u2022 Ask about the meal \n \u2022 Refill drinks";
+    
 }
+
 
 
 - (void) setUpLoginButton {

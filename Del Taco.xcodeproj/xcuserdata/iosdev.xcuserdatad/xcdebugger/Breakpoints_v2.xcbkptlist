@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Del Taco/guidelinesViewController.m"
-            timestampString = "463005653.11117"
+            timestampString = "464827312.654182"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "-loadGuidelines"
             landmarkType = "5">
          </BreakpointContent>

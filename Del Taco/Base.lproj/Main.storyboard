@@ -261,8 +261,8 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N7O-Sj-M5o">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="74"/>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N7O-Sj-M5o">
+                                <rect key="frame" x="-6" y="0.0" width="612" height="74"/>
                                 <items>
                                     <navigationItem title="Employee Guidelines" prompt="" id="NPf-FP-Umb">
                                         <barButtonItem key="leftBarButtonItem" title="Login" id="crA-40-RyX">
@@ -273,12 +273,24 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WSy-T7-zdT">
+                                <rect key="frame" x="16" y="180" width="234" height="248"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UAx-nr-aSq">
+                                <rect key="frame" x="258" y="81" width="326" height="470"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="N7O-Sj-M5o" secondAttribute="centerX" id="eY0-8z-ACo"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="N7O-Sj-M5o" secondAttribute="trailing" constant="-20" id="kFP-fh-ksn"/>
-                            <constraint firstItem="N7O-Sj-M5o" firstAttribute="leading" secondItem="RSW-HU-aeN" secondAttribute="leadingMargin" constant="-20" id="taV-Iz-fPI"/>
+                            <constraint firstItem="WSy-T7-zdT" firstAttribute="top" secondItem="N7O-Sj-M5o" secondAttribute="bottom" constant="106" id="7fa-Xe-80M"/>
+                            <constraint firstItem="iHc-we-6vQ" firstAttribute="top" secondItem="WSy-T7-zdT" secondAttribute="bottom" constant="123" id="Aib-gB-vnE"/>
+                            <constraint firstItem="N7O-Sj-M5o" firstAttribute="top" secondItem="RSW-HU-aeN" secondAttribute="topMargin" id="Enr-5G-GGz"/>
+                            <constraint firstItem="N7O-Sj-M5o" firstAttribute="leading" secondItem="RSW-HU-aeN" secondAttribute="leadingMargin" constant="-22" id="Ksf-ah-1Vy"/>
+                            <constraint firstItem="iHc-we-6vQ" firstAttribute="top" secondItem="UAx-nr-aSq" secondAttribute="bottom" id="LVh-YE-fc8"/>
+                            <constraint firstItem="WSy-T7-zdT" firstAttribute="leading" secondItem="RSW-HU-aeN" secondAttribute="leadingMargin" id="N4u-2v-bO0"/>
+                            <constraint firstItem="UAx-nr-aSq" firstAttribute="trailing" secondItem="RSW-HU-aeN" secondAttribute="trailingMargin" id="ZKj-JA-4HZ"/>
+                            <constraint firstItem="UAx-nr-aSq" firstAttribute="top" secondItem="N7O-Sj-M5o" secondAttribute="bottom" constant="7" id="prJ-Ez-Pl4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="N7O-Sj-M5o" secondAttribute="trailing" constant="-22" id="xEN-Uh-UEw"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="guidelinesOn" id="caV-ce-oyz" customClass="TacoTab">
@@ -292,7 +304,9 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="guideline" destination="UAx-nr-aSq" id="DNc-ih-U5k"/>
                         <outlet property="loginOrOutButton" destination="crA-40-RyX" id="4UH-C0-Fbo"/>
+                        <outlet property="logo" destination="WSy-T7-zdT" id="D5C-Tz-6Rp"/>
                         <segue destination="r7b-F3-q5I" kind="presentation" identifier="guidelinesToLoginSegue" modalTransitionStyle="flipHorizontal" id="5JR-H8-4wP"/>
                         <segue destination="tua-vq-f5D" kind="presentation" identifier="guidelinesToLogoutSegue" modalTransitionStyle="flipHorizontal" id="PDs-j8-t6l"/>
                     </connections>
