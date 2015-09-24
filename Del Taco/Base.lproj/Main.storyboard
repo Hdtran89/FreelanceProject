@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="qnF-AQ-DAH">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -17,37 +18,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mP9-0a-vat">
-                                <rect key="frame" x="-6" y="64" width="615" height="487"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PBo-Cp-F0z">
-                                        <rect key="frame" x="136" y="-4" width="342" height="495"/>
-                                    </imageView>
-                                </subviews>
-                            </scrollView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PBo-Cp-F0z">
+                                <rect key="frame" x="-5" y="64" width="610" height="487"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="PBo-Cp-F0z" secondAttribute="height" multiplier="610:487" id="jPk-oK-EPn"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="mP9-0a-vat" firstAttribute="top" secondItem="YgC-Tk-DcV" secondAttribute="bottom" id="5MU-GY-WhJ"/>
-                            <constraint firstItem="mP9-0a-vat" firstAttribute="leading" secondItem="xha-OD-Bhb" secondAttribute="leadingMargin" constant="-22" id="FtS-M8-HrD"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="mP9-0a-vat" secondAttribute="trailing" constant="-25" id="bSc-pU-n8S"/>
-                            <constraint firstItem="mP9-0a-vat" firstAttribute="leading" secondItem="xha-OD-Bhb" secondAttribute="leadingMargin" id="eUp-4Y-G71"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="mP9-0a-vat" secondAttribute="trailing" id="g0X-vd-awc"/>
-                            <constraint firstItem="9Cn-zZ-BxJ" firstAttribute="top" secondItem="mP9-0a-vat" secondAttribute="bottom" id="vBa-Yy-PbD"/>
-                            <constraint firstItem="9Cn-zZ-BxJ" firstAttribute="top" secondItem="mP9-0a-vat" secondAttribute="bottom" id="vhI-nL-GKh"/>
+                            <constraint firstItem="PBo-Cp-F0z" firstAttribute="leading" secondItem="xha-OD-Bhb" secondAttribute="leadingMargin" constant="-21" id="CP4-dd-Jyp"/>
+                            <constraint firstItem="PBo-Cp-F0z" firstAttribute="top" secondItem="YgC-Tk-DcV" secondAttribute="bottom" id="E55-he-cbP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="PBo-Cp-F0z" secondAttribute="trailing" constant="-21" id="Ugg-ny-kiB"/>
+                            <constraint firstItem="9Cn-zZ-BxJ" firstAttribute="top" secondItem="PBo-Cp-F0z" secondAttribute="bottom" id="V15-RN-9M8"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="FtS-M8-HrD"/>
-                                <exclude reference="bSc-pU-n8S"/>
-                                <exclude reference="vhI-nL-GKh"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Deployment" id="cB1-yz-891"/>
                     <connections>
                         <outlet property="imageView" destination="PBo-Cp-F0z" id="ep5-wt-1I2"/>
-                        <outlet property="scrollView" destination="mP9-0a-vat" id="GmA-6O-NpE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Rp-WI-OEY" userLabel="First Responder" sceneMemberID="firstResponder"/>
