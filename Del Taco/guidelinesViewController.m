@@ -45,14 +45,6 @@
     //[guidelines setImage:[UIImage imageNamed:@"guidelines"]];
     //[self.view addSubview:guidelines];
     
-
-    
-    
-//    self.drinkTextview.text = @"\u2022 Clean all tables, chairs and booths \n \u2022 Clean and stock drink station";
-//    self.floorTextView.text = @"\u2022 Sweep \n \u2022 Spot mop spills \n \u2022 Pick up trash";
-//    self.doorTextView.text = @"\u2022 Open for guest \n \u2022 Clean doors (no fingerprints) \n \u2022 No trash in parking lot / outside area";
-//    self.restroomTextView.text = @"\u2022 Keep clean (empty trash, sink, floor, toilet, and mirror) \n \u2022 Stock (toilet paper, toilet seat covers, soap & paper towels)";
-//    self.tabletextView.text = @"\u2022 Smile \n \u2022 Ask about the meal \n \u2022 Refill drinks";
     
 }
 

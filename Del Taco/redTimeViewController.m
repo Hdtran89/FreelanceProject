@@ -525,7 +525,7 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
     widthOfItemColumn = 0.30*totalEffectiveWidth;
     widthOfStandardsColumn = 0.20*totalEffectiveWidth;
     widthOfInputColumn = (totalEffectiveWidth - widthOfItemColumn - widthOfStandardsColumn) /2;
-    heightOfCell = 18;
+    heightOfCell = 28;
 
     xOffsetC1 = 0;
     xOffsetC2 = xOffsetC1 + widthOfItemColumn;
@@ -556,8 +556,8 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
 - (void) loadTacoBarLabels {
     NSMutableArray *headers = [[NSMutableArray alloc] init];
     NSMutableArray *row1 = [[NSMutableArray alloc] init];
-    UIFont *headerFont = [UIFont fontWithName:@"Helvetica-Bold" size:18];
-    UIFont *inputFont = [UIFont fontWithName:@"Helvetica" size:14];
+    UIFont *headerFont = [UIFont fontWithName:@"Helvetica-Bold" size:20];
+    UIFont *inputFont = [UIFont fontWithName:@"Helvetica" size:16];
     
     //headers
     // vars are prefixed with h_
