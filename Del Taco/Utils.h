@@ -23,10 +23,13 @@
 
 + (UIColor *) DT_ORANGE;
 + (UIColor *) DT_GREEN;
++ (UIColor *) DT_GREEN_LIGHT;
++ (UIColor *) DT_GREEN_DARK;
++ (UIColor *) DT_GREEN_MEDIUM;
 + (UIColor *) DT_YELLOW;
 + (UIColor *) DT_RED;
 + (UIColor *) DT_WHITE;
-
++ (UIColor *) DT_YELLOW_LIGHT;
 
 + (BOOL) getLoggedIn;
 + (void) setLoggedIn: (BOOL)isLoggedIn;

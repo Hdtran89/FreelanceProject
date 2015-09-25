@@ -873,7 +873,7 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
     
     //i i+20
     for (UILabel *l in redTimeLabelsTacoBar) {
-        [l setFont:[UIFont fontWithName:@"Helvetica-Light" size:12]];
+        [l setFont:[UIFont fontWithName:@"Helvetica-Light" size:14]];
         [l setTextAlignment:NSTextAlignmentCenter];
         [l setNumberOfLines:1];
         [l setText:@"red time"];

@@ -279,7 +279,7 @@
 
     widthOfDayColumn = (totalEffectiveWidth)/9;
     widthOfColumn1 = widthOfDayColumn;
-    heightOfCell = 21;
+    heightOfCell = 30;
     
     xOffsetC1 = 0;
     xOffsetC2 = xOffsetC1 + widthOfColumn1;
@@ -321,8 +321,8 @@
 
 - (void) loadSpeedLabels {
     [self loadSpeedConstraints];
-    UIFont *headerFont = [UIFont fontWithName:@"Helvetica-Bold" size:16];
-    UIFont *inputFont = [UIFont fontWithName:@"Helvetica" size:8];
+    UIFont *headerFont = [UIFont fontWithName:@"Helvetica-Bold" size:18];
+    UIFont *inputFont = [UIFont fontWithName:@"Helvetica" size:10];
 
     //row 1 headers
     NSMutableArray *row1Headers = [[NSMutableArray alloc] initWithObjects:@"Wednesday", @"Thursday", @"Friday", @"Saturday", @"Sunday", @"Monday", @"Tuesday", @"Week", nil];
@@ -349,7 +349,13 @@
             [l setFrame:specialHeaderFrame];
             [l setText:[col1SpecialHeaders objectAtIndex:c]];
             c++;
-            [l setBackgroundColor:[Utils DT_YELLOW]];
+            if(i == 1 || i == 9){
+                [l setBackgroundColor:[Utils DT_YELLOW]];
+            }
+            if(i == 5 || i == 13){
+                [l setBackgroundColor:[Utils DT_YELLOW_LIGHT]];
+            }
+            
 
         }
         if (i == 2 || i == 6 || i == 10 | i == 14) {
@@ -510,7 +516,7 @@
     widthOfDayColumn = (totalEffectiveWidth-7.0*widthOfMicColumn)/9.0;
     widthOfColumn1 = widthOfDayColumn;
     //divide by an arbitary integer (this is the number of rows that would theortically fill screen)
-    heightOfCell = (totalEffectiveHeight)/37.0;
+    heightOfCell = (totalEffectiveHeight)/25.0;
     
     xOffsetC1 = 0;
     xOffsetC2 = xOffsetC1 + widthOfColumn1;
@@ -562,8 +568,8 @@
 
 - (void) loadServiceLabels {
     [self loadServiceConstraints];
-    UIFont *headerFont = [UIFont fontWithName:@"Helvetica-Bold" size:12];
-    UIFont *inputFont = [UIFont fontWithName:@"Helvetica" size:8];
+    UIFont *headerFont = [UIFont fontWithName:@"Helvetica-Bold" size:14];
+    UIFont *inputFont = [UIFont fontWithName:@"Helvetica" size:10];
     
     //have to introduce widthoflabel var so because mic labels are not as wide as day labels
     int widthOfLabel = 0;
@@ -594,7 +600,18 @@
             [l setFrame:specialHeaderFrame];
             [l setText:[col1SpecialHeaders objectAtIndex:c]];
             c++;
-            [l setBackgroundColor:[Utils DT_GREEN]];
+            if( i== 1){
+                [l setBackgroundColor:[Utils DT_GREEN_LIGHT]];
+            }
+            if(i == 7){
+                [l setBackgroundColor:[Utils DT_GREEN_MEDIUM]];
+            }
+            if (i == 13) {
+                [l setBackgroundColor:[Utils DT_GREEN]];
+            }
+            if (i == 19) {
+                [l setBackgroundColor:[Utils DT_GREEN_DARK]];
+            }
             
         }
         if (i == 2 || i == 8 || i == 14 | i == 20) {
@@ -777,7 +794,7 @@
     
     widthOfDayColumn = (totalEffectiveWidth)/9;
     widthOfColumn1 = widthOfDayColumn;
-    heightOfCell = 21;
+    heightOfCell = 30;
     
     xOffsetC1 = 0;
     xOffsetC2 = xOffsetC1 + widthOfColumn1;
@@ -819,7 +836,7 @@
 - (void) loadSalesLabels {
     [self loadSalesConstraints];
     UIFont *headerFont = [UIFont fontWithName:@"Helvetica-Bold" size:14];
-    UIFont *inputFont = [UIFont fontWithName:@"Helvetica" size:8];
+    UIFont *inputFont = [UIFont fontWithName:@"Helvetica" size:12];
     
     //row 1 headers
     NSMutableArray *row1Headers = [[NSMutableArray alloc] initWithObjects:@"Period", @"Wednesday", @"Thursday", @"Friday", @"Saturday", @"Sunday", @"Monday", @"Tuesday", @"Week", nil];
@@ -846,7 +863,19 @@
             [l setFrame:specialHeaderFrame];
             [l setText:[col1SpecialHeaders objectAtIndex:c]];
             c++;
-            [l setBackgroundColor:[Utils DT_GREEN]];
+            
+            if( i== 1){
+                [l setBackgroundColor:[Utils DT_GREEN_LIGHT]];
+            }
+            if(i == 5){
+                [l setBackgroundColor:[Utils DT_GREEN_MEDIUM]];
+            }
+            if (i == 9) {
+                [l setBackgroundColor:[Utils DT_GREEN]];
+            }
+            if (i == 13) {
+                [l setBackgroundColor:[Utils DT_GREEN_DARK]];
+            }
             
         }
         if (i == 2 || i == 6 || i == 10 | i == 14) {

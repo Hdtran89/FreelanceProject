@@ -54,7 +54,18 @@ BOOL isAdmin;
     return [UIColor colorWithRed:157/255.0 green:166/255.0 blue:56/255.0 alpha:1];
 
 }
-
++ (UIColor *) DT_GREEN_LIGHT {
+    return [UIColor colorWithRed:157/255.0 green:186/255.0 blue:56/255.0 alpha:1];
+    
+}
++ (UIColor *) DT_GREEN_DARK {
+    return [UIColor colorWithRed:157/255.0 green:156/255.0 blue:56/255.0 alpha:1];
+    
+}
++ (UIColor *) DT_GREEN_MEDIUM {
+    return [UIColor colorWithRed:157/255.0 green:176/255.0 blue:56/255.0 alpha:1];
+    
+}
 + (UIColor *) DT_RED {
     return [UIColor colorWithRed:238/255.0 green:48/255.0 blue:37/255.0 alpha:1];
 
@@ -66,6 +77,10 @@ BOOL isAdmin;
 
 + (UIColor *) DT_YELLOW {
     return [UIColor colorWithRed:253/255.0 green:209/255.0 blue:8/255.0 alpha:1];
+}
+
++ (UIColor *) DT_YELLOW_LIGHT {
+    return [UIColor colorWithRed:253/255.0 green:255/255.0 blue:8/255.0 alpha:1];
 }
 
 
