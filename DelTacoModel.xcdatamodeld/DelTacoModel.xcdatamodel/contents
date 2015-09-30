@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14E46" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="RedTimes" representedClassName="RedTimes" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="itemName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="other" optional="YES" attributeType="Boolean" syncable="YES"/>
+    </entity>
+    <entity name="Speed" representedClassName="Speed" syncable="YES">
+        <attribute name="goal" optional="YES" attributeType="Integer 64" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="lastYearSale" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Speed" positionX="-63" positionY="-18" width="128" height="75"/>
+        <element name="RedTimes" positionX="-65" positionY="72" width="128" height="88"/>
+    </elements>
+</model>

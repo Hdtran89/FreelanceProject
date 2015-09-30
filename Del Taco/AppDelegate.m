@@ -25,18 +25,19 @@
     [Fabric with:@[[Crashlytics class]]];
 
     //assign tab bar item with titles
-    UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
+    //UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
     
     UIColor *DT_ORANGE = [Utils DT_ORANGE];
-    UIColor *DT_GREEN = [Utils DT_GREEN];
+   // UIColor *DT_GREEN = [Utils DT_GREEN];
     UIColor *DT_RED = [Utils DT_RED];
-    UIColor *DT_YELLOW = [Utils DT_YELLOW];
-    UIColor *DT_WHITE = [Utils DT_WHITE];
+   // UIColor *DT_YELLOW = [Utils DT_YELLOW];
+    //UIColor *DT_WHITE = [Utils DT_WHITE];
     
     [[UITabBar appearance] setBarTintColor:DT_ORANGE];
     [[UITabBar appearance] setTintColor:DT_RED];
     [[UITabBar appearance] setTranslucent:NO]; 
     [[UINavigationBar appearance] setBarTintColor:DT_ORANGE];
+    
 //    [[UITabBarItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : [UIColor blackColor] }
 //                                             forState:UIControlStateNormal];
 //    [[UITabBarItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : [UIColor blackColor] }
@@ -93,7 +94,13 @@
         [self.window makeKeyAndVisible];
     }
     
-    
+//        self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
+//        UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    
+//        UIViewController * rootViewController =
+//                    [storyboard instantiateViewControllerWithIdentifier:@"displayScreen"];
+//        self.window.rootViewController = rootViewController;
+//        [self.window makeKeyAndVisible];
     
     return YES;
 }

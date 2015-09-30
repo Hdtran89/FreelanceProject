@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "Utils.h" 
 #import <MessageUI/MessageUI.h>
+#import "RedTimes.h"
+
 @interface redTimeViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIGestureRecognizerDelegate, UIApplicationDelegate, MFMailComposeViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 - (IBAction)segmentSwitch:(id)sender;
@@ -19,7 +21,8 @@
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *refreshBtn;
 
-
+@property (strong, nonatomic)RedTimes * record;
+@property (strong, nonatomic)NSManagedObjectContext * managedObjectContext;
 
 - (IBAction)sendReport:(id)sender;
 

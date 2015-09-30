@@ -1241,6 +1241,8 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
     
     int tag = textField.tag;
     
+    //TODO Save the Goal into Core Data to Populate FrontScreen..
+    //GOAL is an INT
     if (isSpeed){
         NSCharacterSet* notDigits = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
         if (tag < 40) {
@@ -1291,9 +1293,9 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
         }
         
     } else if (isService) {
-        
+        //TODO:: SAVE number of transaction 
     } else if (isSales) {
-        
+        //TODO:: SAVE last Year Sales from a FLOAT value to populate front screen
         if (tag < 40) {
             lastYearSales = [[textField text] floatValue];
             if (lastYearSales <= 0.00) {

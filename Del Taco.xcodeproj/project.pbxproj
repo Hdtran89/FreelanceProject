@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		6A0099091B98E979008A3F82 /* logoutConfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A0099081B98E979008A3F82 /* logoutConfViewController.m */; };
+		6A05CE631BBC851000A7E858 /* DelTacoModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6A05CE611BBC851000A7E858 /* DelTacoModel.xcdatamodeld */; };
+		6A05CE721BBC986300A7E858 /* Speed.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A05CE711BBC986300A7E858 /* Speed.m */; };
+		6A05CE751BBC986400A7E858 /* RedTimes.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A05CE741BBC986400A7E858 /* RedTimes.m */; };
 		6A623CC11B97A42E007283E7 /* TacoTab.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A623CC01B97A42E007283E7 /* TacoTab.m */; };
 		6A6CFB8D1B7A75FC00FB25C8 /* redTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6CFB8C1B7A75FC00FB25C8 /* redTimeViewController.m */; };
 		6A6CFB901B7A8FFD00FB25C8 /* CleaningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6CFB8F1B7A8FFD00FB25C8 /* CleaningViewController.m */; };
@@ -41,6 +44,7 @@
 		6AF4F2AB1B7E830100DFAA8C /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AF4F2AA1B7E830100DFAA8C /* libsqlite3.dylib */; };
 		6AF4F2AD1B7E838300DFAA8C /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AF4F2AC1B7E838300DFAA8C /* Accounts.framework */; };
 		6AF4F2AF1B7E838700DFAA8C /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AF4F2AE1B7E838700DFAA8C /* Social.framework */; };
+		6AF62FA51BB5F3D300D3962F /* displayScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AF62FA41BB5F3D300D3962F /* displayScreenViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +60,11 @@
 /* Begin PBXFileReference section */
 		6A0099071B98E979008A3F82 /* logoutConfViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = logoutConfViewController.h; sourceTree = "<group>"; };
 		6A0099081B98E979008A3F82 /* logoutConfViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = logoutConfViewController.m; sourceTree = "<group>"; };
+		6A05CE621BBC851000A7E858 /* DelTacoModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DelTacoModel.xcdatamodel; sourceTree = "<group>"; };
+		6A05CE701BBC986300A7E858 /* Speed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Speed.h; sourceTree = "<group>"; };
+		6A05CE711BBC986300A7E858 /* Speed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Speed.m; sourceTree = "<group>"; };
+		6A05CE731BBC986400A7E858 /* RedTimes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RedTimes.h; sourceTree = "<group>"; };
+		6A05CE741BBC986400A7E858 /* RedTimes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RedTimes.m; sourceTree = "<group>"; };
 		6A623CBF1B97A42E007283E7 /* TacoTab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TacoTab.h; sourceTree = "<group>"; };
 		6A623CC01B97A42E007283E7 /* TacoTab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TacoTab.m; sourceTree = "<group>"; };
 		6A6CFB8B1B7A75FC00FB25C8 /* redTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = redTimeViewController.h; sourceTree = "<group>"; };
@@ -103,6 +112,8 @@
 		6AF4F2AA1B7E830100DFAA8C /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		6AF4F2AC1B7E838300DFAA8C /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		6AF4F2AE1B7E838700DFAA8C /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		6AF62FA41BB5F3D300D3962F /* displayScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = displayScreenViewController.m; path = ../displayScreenViewController.m; sourceTree = "<group>"; };
+		6AF62FA61BB5F3E400D3962F /* displayScreenViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = displayScreenViewController.h; path = ../displayScreenViewController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +155,11 @@
 		6AEAF4B41B75604300E9A8A5 = {
 			isa = PBXGroup;
 			children = (
+				6A05CE731BBC986400A7E858 /* RedTimes.h */,
+				6A05CE741BBC986400A7E858 /* RedTimes.m */,
+				6A05CE701BBC986300A7E858 /* Speed.h */,
+				6A05CE711BBC986300A7E858 /* Speed.m */,
+				6A05CE611BBC851000A7E858 /* DelTacoModel.xcdatamodeld */,
 				6AE9B9CF1BA773DD00276B76 /* Fabric.framework */,
 				6AE9B9D01BA773DD00276B76 /* Crashlytics.framework */,
 				6AF4F2AE1B7E838700DFAA8C /* Social.framework */,
@@ -180,6 +196,8 @@
 		6AEAF4BF1B75604300E9A8A5 /* Del Taco */ = {
 			isa = PBXGroup;
 			children = (
+				6AF62FA61BB5F3E400D3962F /* displayScreenViewController.h */,
+				6AF62FA41BB5F3D300D3962F /* displayScreenViewController.m */,
 				6AEAF4C41B75604300E9A8A5 /* AppDelegate.h */,
 				6AEAF4C51B75604300E9A8A5 /* AppDelegate.m */,
 				6A623CBF1B97A42E007283E7 /* TacoTab.h */,
@@ -356,6 +374,7 @@
 			files = (
 				6AF4F28F1B7E771700DFAA8C /* LoginViewController.m in Sources */,
 				6AEAF4C91B75604300E9A8A5 /* ViewController.m in Sources */,
+				6A05CE751BBC986400A7E858 /* RedTimes.m in Sources */,
 				6AEAEA331B79402F0043B80B /* guidelinesViewController.m in Sources */,
 				6A6CFB901B7A8FFD00FB25C8 /* CleaningViewController.m in Sources */,
 				6A623CC11B97A42E007283E7 /* TacoTab.m in Sources */,
@@ -363,8 +382,11 @@
 				6AE6F8111B910A7F002198ED /* StatisticsViewController.m in Sources */,
 				6A6CFB8D1B7A75FC00FB25C8 /* redTimeViewController.m in Sources */,
 				6A0099091B98E979008A3F82 /* logoutConfViewController.m in Sources */,
+				6A05CE721BBC986300A7E858 /* Speed.m in Sources */,
 				6AEAEA361B7940810043B80B /* Utils.m in Sources */,
 				6AE974D01B8E406200794937 /* DeploymentViewController.m in Sources */,
+				6AF62FA51BB5F3D300D3962F /* displayScreenViewController.m in Sources */,
+				6A05CE631BBC851000A7E858 /* DelTacoModel.xcdatamodeld in Sources */,
 				6AEAF4C31B75604300E9A8A5 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -592,6 +614,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		6A05CE611BBC851000A7E858 /* DelTacoModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				6A05CE621BBC851000A7E858 /* DelTacoModel.xcdatamodel */,
+			);
+			currentVersion = 6A05CE621BBC851000A7E858 /* DelTacoModel.xcdatamodel */;
+			path = DelTacoModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 6AEAF4B51B75604300E9A8A5 /* Project object */;
 }

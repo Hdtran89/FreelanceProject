@@ -12,7 +12,6 @@
 //TEXTFIELDS RESET ON SEGMENT SWITCH (PROPOSED FIX: MOVE INITIALIZATION CODE OUTSIDE OF TACOBAR BLOCK AND MAKE IT UNIVERSAL.
 
 #import "redTimeViewController.h"
-
 @interface redTimeViewController () {
     UIView *drinkStationView;
     UIView *tacoBarView;
@@ -71,6 +70,11 @@
     NSMutableArray *redTimeLabelsDrinkStation;
     NSMutableArray *redTimeLabelsTacoBar;
     NSMutableArray *drinkStationFields;
+    
+    NSString * itemname;
+    NSDate * starttime;
+    NSDate * endtime;
+    Boolean otherOption;
 }
 
 @end
@@ -962,42 +966,120 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
     if (isTacoBar) {
         switch (textField.tag) {
                 //steak - 1hour
-            case 0:
+            case 0: {
+                itemname = @"Steak";
+                otherOption = NO;
+                hours = 1;
+                break;
+            }
             case 20: {
                 //newDate = [parsed dateByAddingTimeInterval:secondsIn1Hours];
+                itemname = @"Steak";
+                otherOption = YES;
                 hours = 1;
                 break;
             }
                 //tacomeat - 2hour
-            case 1:
+            case 1: {
+                itemname = @"Taco Meat";
+                otherOption = NO;
+                hours = 2;
+                break;
+            }
             case 21: {
                // newDate = [parsed dateByAddingTimeInterval:secondsIn2Hours];
+                itemname = @"Taco Meat";
+                otherOption = YES;
                 hours = 2;
                 break;
             }
                 //chicken - 3hour
-            case 2:
+            case 2: {
+                itemname = @"Chicken";
+                otherOption = NO;
+                hours = 3;
+                break;
+            }
             case 22: {
                 //newDate = [parsed dateByAddingTimeInterval:secondsIn3Hours];
+                itemname = @"Chicken";
+                otherOption = YES;
                 hours = 3;
                 break;
             }
                 //rice, red sauce, green sauce, red chili topping,
                 //4hour
                 //veg blend, tomatoes sliced and diced, pico de gallo
-            case 3:
-            case 4:
-            case 5:
-            case 6:
-            case 13:
-            case 14:
-            case 15:
-            case 16:
-            case 23:
-            case 24:
-            case 25:
+            case 3:{
+                itemname = @"Rice";
+                otherOption = NO;
+                hours = 4;
+                break;
+            }
+            case 4:{
+                itemname = @"Red Sauce";
+                otherOption = NO;
+                hours = 4;
+                break;
+            }
+            case 5:{
+                itemname = @"Green Sauce";
+                otherOption = NO;
+                hours = 4;
+                break;
+            }
+            case 6:{
+                itemname = @"Red Chilli Topping";
+                otherOption = NO;
+                hours = 4;
+                break;
+            }
+            case 13:{
+                itemname = @"Veg Blend";
+                otherOption = YES;
+                hours = 4;
+                break;
+            }
+            case 14:{
+                itemname = @"Tomatoes - Sliced";
+                otherOption = YES;
+                hours = 4;
+                break;
+            }
+            case 15:{
+                itemname = @"Tomatoes - Diced";
+                otherOption = YES;
+                hours = 4;
+                break;
+            }
+            case 16:{
+                itemname = @"Pico De Gallo Salsa";
+                otherOption = YES;
+                hours = 4;
+                break;
+            }
+            case 23:{
+                itemname = @"Rice";
+                otherOption = YES;
+                hours = 4;
+                break;
+            }
+            case 24:{
+                itemname = @"Red Sauce";
+                otherOption = YES;
+                hours = 4;
+                break;
+            }
+            case 25:{
+                itemname = @"Green Sauce";
+                otherOption = YES;
+                hours = 4;
+                break;
+            }
             case 26: {
                 //newDate = [parsed dateByAddingTimeInterval:secondsIn4Hours];
+                itemname = @"Red Chilli Topping";
+                otherOption = YES;
                 hours = 4;
                 break;
             }
@@ -1005,13 +1087,48 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
             //black beans
             //pinto beans
             //nacho cheese
-            case 7:
-            case 8:
-            case 9:
-            case 10:
-            case 27:
-            case 28:
-            case 29:
+            case 7: {
+                itemname = @"Turkey";
+                otherOption = NO;
+                hours = 8;
+                break;
+            }
+            case 8: {
+                itemname = @"Black Beans";
+                otherOption = NO;
+                hours = 8;
+                break;
+            }
+            case 9:{
+                itemname = @"Pinto Beans";
+                otherOption = NO;
+                hours = 8;
+                break;
+            }
+            case 10:{
+                itemname = @"Nacho Cheese";
+                otherOption = NO;
+                hours = 8;
+                break;
+            }
+            case 27:{
+                itemname = @"Black Beans";
+                otherOption = YES;
+                hours = 8;
+                break;
+            }
+            case 28:{
+                itemname = @"Pinto Beans";
+                otherOption = YES;
+                hours = 8;
+                break;
+            }
+            case 29:{
+                itemname = @"Nacho Cheese";
+                otherOption = YES;
+                hours = 8;
+                break;
+            }
             case 30:{
                // newDate = [parsed dateByAddingTimeInterval:secondsIn8Hours];
                 hours = 8;
@@ -1023,9 +1140,12 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
     } else if (isDrinkStation) {
         switch (textField.tag) {
             //coffee 2 hours
-            case 0:
-                hours =2;
+            case 0:{
+                itemname = @"Rice";
+                otherOption = NO;
+                hours = 2;
                 break;
+            }
             //lemons
             //strawberries 4 hours
             case 1:
@@ -1053,10 +1173,12 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
                 break;
         }
     }
+    
     NSDateComponents *add = [[NSDateComponents alloc] init];
     [add setHour:hours];
    // newDate = [greg dateByAddingUnit:NSCalendarUnitHour value:hours toDate:newDate options:0];//:add toDate:newDate options:0];
     newDate = [greg dateByAddingComponents:add toDate:newDate options:0];
+    
     output = [df stringFromDate:newDate];
 
     newDate = [df dateFromString:[df stringFromDate:newDate]];
@@ -1067,6 +1189,7 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
     
     NSLog(@"new date: %@", output);
     
+    //TODO:: SAVE THE OUTPUT to the core data as a string of date and populate the view
     if (isTacoBar) {
         if (textField.tag == 13) redTimeVegBlend.text = output;
         else if (textField.tag == 14) redTimeTomatoes_S.text = output;
@@ -1077,9 +1200,6 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
                 r.text = output;
             }
         }
-
-        
-        
     } else {
         for (UILabel *r in redTimeLabelsDrinkStation) {
             if (r.tag == textField.tag) {
@@ -1209,5 +1329,24 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
     // Close the Mail Interface
     [self dismissViewControllerAnimated:YES completion:NULL];
     
+}
+
+-(void)saveData :(NSDate *) dateTime
+                :(NSString *) itemName
+                :(Boolean) otherOpt {
+    NSEntityDescription * entity = [NSEntityDescription entityForName:@"RedTimes" inManagedObjectContext:self.managedObjectContext];
+    self.record = [[RedTimes alloc] initWithEntity:entity insertIntoManagedObjectContext:self.managedObjectContext];
+    
+    NSLog(@"Date: %@", dateTime);
+    NSLog(@"item Name : %@", itemName);
+    NSLog(@"other option: %hhu", otherOpt);
+    
+    self.record.itemName = itemName;
+    self.record.date = dateTime;
+    
+    if(otherOption == 1)
+        self.record.other = [NSNumber numberWithBool:YES];
+    else
+        self.record.other = [NSNumber numberWithBool:NO];
 }
 @end
