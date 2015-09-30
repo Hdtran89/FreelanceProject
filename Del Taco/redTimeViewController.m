@@ -1141,34 +1141,62 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
         switch (textField.tag) {
             //coffee 2 hours
             case 0:{
-                itemname = @"Rice";
+                itemname = @"Coffee";
                 otherOption = NO;
                 hours = 2;
                 break;
             }
             //lemons
             //strawberries 4 hours
-            case 1:
-            case 2:
+            case 1:{
+                itemname = @"Lemons";
+                otherOption = NO;
                 hours = 4;
                 break;
+            }
+            case 2:
+            {
+                itemname = @"Strawberries";
+                otherOption = NO;
+                hours = 4;
+                break;
+            }
             //iced tea
             //sweet tea 8 hours
-            case 3:
-            case 4:
+            case 3:{
+                itemname = @"Iced Tea";
+                otherOption = NO;
                 hours = 8;
                 break;
+            }
+            case 4:{
+                itemname = @"Sweet Tea";
+                otherOption = NO;
+                hours = 8;
+                break;
+            }
             //chocolate syrup 72 hours
-            case 5:
+            case 5:{
+                itemname = @"Chocolate Syrup";
+                otherOption = NO;
                 hours = 72;
                 break;
+            }
             //capuccino
             //shake mix
             // 24 hours
-            case 6:
-            case 7:
+            case 6:{
+                itemname = @"Capuccino";
+                otherOption = NO;
                 hours = 24;
                 break;
+            }
+            case 7:{
+                itemname = @"Shake Mix";
+                otherOption = NO;
+                hours = 24;
+                break;
+            }
             default:
                 break;
         }
@@ -1184,6 +1212,8 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
     newDate = [df dateFromString:[df stringFromDate:newDate]];
     [self scheduleNotificationForDate:newDate];
     
+    //Save to the Core Data
+    [self saveData:newDate :itemname :otherOption];
     
     [self showAlertForRedTimeInput:output];
     
@@ -1349,4 +1379,10 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
     else
         self.record.other = [NSNumber numberWithBool:NO];
 }
+-(void)updateData :(NSData *) dateTime
+                  :(NSString *) itemName
+                  :(Boolean) otherOpt {
+    //TODO update the current item
+}
+
 @end
