@@ -2,7 +2,7 @@
 //  Speed.h
 //  Del Taco
 //
-//  Created by iOSDev on 9/30/15.
+//  Created by iOSDev on 10/1/15.
 //  Copyright (c) 2015 United Tax. All rights reserved.
 //
 
@@ -12,7 +12,11 @@
 
 @interface Speed : NSManagedObject
 
+@property (nonatomic, retain) NSNumber * weeklygoal;
 @property (nonatomic, retain) NSNumber * lastYearSale;
-@property (nonatomic, retain) NSNumber * goal;
+@property (nonatomic, retain) NSNumber * dailygoal;
+@property (nonatomic, retain) NSNumber * weeklyactual;
+@property (nonatomic, retain) NSNumber * dailyactual;
+@property (nonatomic, retain) NSString * day;
 
 @end

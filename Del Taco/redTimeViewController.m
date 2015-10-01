@@ -72,8 +72,7 @@
     NSMutableArray *drinkStationFields;
     
     NSString * itemname;
-    NSDate * starttime;
-    NSDate * endtime;
+    NSDate * datetime;
     Boolean otherOption;
 }
 
@@ -1213,13 +1212,15 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
     [self scheduleNotificationForDate:newDate];
     
     //Save to the Core Data
-    [self saveData:newDate :itemname :otherOption];
+    datetime = newDate;
+    [Utils createRedTimeRecord:itemname
+                   setDateTime:datetime
+                    checkOther:otherOption];
     
     [self showAlertForRedTimeInput:output];
     
     NSLog(@"new date: %@", output);
     
-    //TODO:: SAVE THE OUTPUT to the core data as a string of date and populate the view
     if (isTacoBar) {
         if (textField.tag == 13) redTimeVegBlend.text = output;
         else if (textField.tag == 14) redTimeTomatoes_S.text = output;
@@ -1359,30 +1360,6 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
     // Close the Mail Interface
     [self dismissViewControllerAnimated:YES completion:NULL];
     
-}
-
--(void)saveData :(NSDate *) dateTime
-                :(NSString *) itemName
-                :(Boolean) otherOpt {
-    NSEntityDescription * entity = [NSEntityDescription entityForName:@"RedTimes" inManagedObjectContext:self.managedObjectContext];
-    self.record = [[RedTimes alloc] initWithEntity:entity insertIntoManagedObjectContext:self.managedObjectContext];
-    
-    NSLog(@"Date: %@", dateTime);
-    NSLog(@"item Name : %@", itemName);
-    NSLog(@"other option: %hhu", otherOpt);
-    
-    self.record.itemName = itemName;
-    self.record.date = dateTime;
-    
-    if(otherOption == 1)
-        self.record.other = [NSNumber numberWithBool:YES];
-    else
-        self.record.other = [NSNumber numberWithBool:NO];
-}
--(void)updateData :(NSData *) dateTime
-                  :(NSString *) itemName
-                  :(Boolean) otherOpt {
-    //TODO update the current item
 }
 
 @end

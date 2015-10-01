@@ -10,6 +10,8 @@
 #import <UIKit/UIKit.h>
 #import "Parse/Parse.h"
 #import <QuartzCore/QuartzCore.h>
+#import "Speed.h"
+#import "RedTimes.h"
 @interface Utils : NSObject
 
 + (CGFloat) getScreenWidth;
@@ -34,5 +36,52 @@
 + (BOOL) getLoggedIn;
 + (void) setLoggedIn: (BOOL)isLoggedIn;
 
+@property (readonly, strong, nonatomic) NSManagedObjectContext * managedObjectContext;
+@property (readonly, strong, nonatomic) NSManagedObjectModel * managedObjectModel;
+@property (readonly, strong, nonatomic) NSPersistentStoreCoordinator * persistentStoreCoordinator;
+//CRUD for RedTime Core Data
++ (void)updateRedTimeRecord:(NSString *) item
+                setDateTime:(NSDate *) dateTime
+                 checkOther:(BOOL) isOther;
 
++ (void)createRedTimeRecord:(NSString *) item
+                setDateTime:(NSDate *) dateTime
+                 checkOther:(BOOL) isOther;
+
++ (void)readRedTimeRecord:(NSString *) item
+              setDateTime:(NSDate *) dateTime
+               checkOther:(BOOL) isOther;
+
++ (void)deleteRedTimeRecord:(NSString *) item
+                setDateTime:(NSDate *) dateTime
+                 checkOther:(BOOL) isOther;
+
+//CRUD for Speed Core Data
++ (void)updateSpeedRecord:(NSString *) day
+            setweeklyGoal:(NSNumber *) weeklyGoal
+          setWeeklyActual:(NSNumber *) weeklyActual
+             setDailyGoal:(NSNumber *) dailyGoal
+           setDailyActual:(NSNumber *) dailyActual
+          setLastYearSale:(NSNumber *) lastYearSales ;
+
++ (void)createSpeedRecord:(NSString *) day
+            setweeklyGoal:(NSNumber *) weeklyGoal
+          setWeeklyActual:(NSNumber *) weeklyActual
+             setDailyGoal:(NSNumber *) dailyGoal
+           setDailyActual:(NSNumber *) dailyActual
+          setLastYearSale:(NSNumber *) lastYearSales ;
+
++ (void)readRedTimeRecord:(NSString *) day
+            setweeklyGoal:(NSNumber *) weeklyGoal
+          setWeeklyActual:(NSNumber *) weeklyActual
+             setDailyGoal:(NSNumber *) dailyGoal
+           setDailyActual:(NSNumber *) dailyActual
+          setLastYearSale:(NSNumber *) lastYearSales ;
+
++ (void)deleteRedTimeRecord:(NSString *) day
+              setweeklyGoal:(NSNumber *) weeklyGoal
+            setWeeklyActual:(NSNumber *) weeklyActual
+               setDailyGoal:(NSNumber *) dailyGoal
+             setDailyActual:(NSNumber *) dailyActual
+            setLastYearSale:(NSNumber *) lastYearSales ;
 @end

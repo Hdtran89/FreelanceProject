@@ -2,7 +2,7 @@
 //  Speed.m
 //  Del Taco
 //
-//  Created by iOSDev on 9/30/15.
+//  Created by iOSDev on 10/1/15.
 //  Copyright (c) 2015 United Tax. All rights reserved.
 //
 
@@ -11,7 +11,11 @@
 
 @implementation Speed
 
+@dynamic weeklygoal;
 @dynamic lastYearSale;
-@dynamic goal;
+@dynamic dailygoal;
+@dynamic weeklyactual;
+@dynamic dailyactual;
+@dynamic day;
 
 @end

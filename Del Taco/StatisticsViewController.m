@@ -106,9 +106,12 @@
     float actualSales;
     float lastYearSales;
     
-
-
-
+    NSNumber * weeklygoal;
+    NSNumber * weeklyactual;
+    NSNumber * dailygoal;
+    NSNumber * dailyactual;
+    NSString * day;
+    NSNumber * lastyear;
 }
 
 @end
@@ -1246,6 +1249,7 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
     if (isSpeed){
         NSCharacterSet* notDigits = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
         if (tag < 40) {
+            NSLog(@"Tag: %i", tag);
             goal = [[textField text] integerValue];
             if ([textField.text rangeOfCharacterFromSet:notDigits].location != NSNotFound) {
                 [self alertForMisFormedText];
@@ -1254,6 +1258,7 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
                 [textField setEnabled:NO];
                 [textField setBackgroundColor:[UIColor grayColor]];
             }
+            
         } else {
             actual = [[textField text] integerValue];
             if ([textField.text rangeOfCharacterFromSet:notDigits].location != NSNotFound) {

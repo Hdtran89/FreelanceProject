@@ -92,8 +92,164 @@ BOOL isAdmin;
 + (void) setLoggedIn: (BOOL)isLoggedIn {
     isAdmin = isLoggedIn;
 }
+//CRUD TO USE FOR CORE DATA
+@synthesize managedObjectContext = _managedObjectContext;
+@synthesize managedObjectModel = _managedObjectModel;
+@synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
++ (void)createRedTimeRecord: (NSString *) item
+         setDateTime:(NSDate *) dateTime
+          checkOther:(BOOL) isOther;{
+    NSManagedObjectContext * context = [[NSManagedObjectContext alloc] init];
+    RedTimes * redtimes = [NSEntityDescription insertNewObjectForEntityForName:@"RedTimes" inManagedObjectContext:context];
+    
+    redtimes.date = dateTime;
+    redtimes.itemName = item;
+    if(isOther == 1)
+        redtimes.other = [NSNumber numberWithBool:YES];
+    else
+        redtimes.other = [NSNumber numberWithBool:NO];
 
-
-
+    NSError * error = nil;
+    if([context save: &error]) {
+        NSLog(@ "New record has been save:");
+    } else {
+        NSLog(@"New record was not save!: %@",[error userInfo]);
+    }
+    
+}
++ (void)updateRedTimeRecord: (BOOL)isSpeed
+         setDateTime:(NSDate *) dateTime
+         setItemName:(NSString *) item
+          checkOther:(BOOL) isOther
+             setGoal:(NSNumber *) goalNum
+     setLastYearSale:(NSNumber *) lastYearSales ; {
+    NSManagedObjectContext * context = [[NSManagedObjectContext alloc] init];
+    NSFetchRequest * fetchRequest = [[NSFetchRequest alloc]init];
+    NSEntityDescription * entity = [NSEntityDescription entityForName:@"RedTimes" inManagedObjectContext:context];
+    [fetchRequest entity];
+    NSError * error = nil;
+    NSArray * fetchObjects = [context executeFetchRequest:fetchRequest error:&error];
+    for (RedTimes * redtime in fetchObjects) {
+        //TODO update the RedTime item;
+        
+    }
+}
++ (void)deleteRedTimeRecord: (BOOL)isSpeed
+         setDateTime:(NSDate *) dateTime
+         setItemName:(NSString *) item
+          checkOther:(BOOL) isOther
+             setGoal:(NSNumber *) goalNum
+     setLastYearSale:(NSNumber *) lastYearSales ; {
+    NSManagedObjectContext * context = [[NSManagedObjectContext alloc] init];
+    NSFetchRequest * fetchRequest = [[NSFetchRequest alloc]init];
+    //TODO if needed to delete record
+    //use NSPredicate * predicate
+    //[fetchRequest setPredicate: predicate]
+    //Set NSError and fetch the Object form array
+    //loop through the array
+    //Grab the record and delete
+    //[context deleleObject:Speed]
+    //Check for error and save the change with [context save:&error]
+    //Log
+    
+}
++(void)readRedTimeRecord: (BOOL)isSpeed
+      setDateTime:(NSDate *) dateTime
+      setItemName:(NSString *) item
+       checkOther:(BOOL) isOther
+          setGoal:(NSNumber *) goalNum
+  setLastYearSale:(NSNumber *) lastYearSales ; {
+    NSManagedObjectContext * context =  [[NSManagedObjectContext alloc] init];
+    NSFetchRequest * fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription * entity = [NSEntityDescription entityForName:@"RedTimes" inManagedObjectContext:context];
+    
+    [fetchRequest setEntity:entity];
+   
+    NSError * error = nil;
+    
+    NSArray * fetchObjects = [context executeFetchRequest:fetchRequest error:&error];
+    
+    for(RedTimes * redtime in fetchObjects){
+        //TODO save RedTime item to be use for the view later
+    }
+}
++ (void)updateSpeedRecord:(NSString *) day
+            setweeklyGoal:(NSNumber *) weeklyGoal
+          setWeeklyActual:(NSNumber *) weeklyActual
+             setDailyGoal:(NSNumber *) dailyGoal
+          setDailyActual:(NSNumber *) dailyActual
+          setLastYearSale:(NSNumber *) lastYearSales {
+    NSManagedObjectContext * context = [[NSManagedObjectContext alloc] init];
+    NSFetchRequest * fetchRequest = [[NSFetchRequest alloc]init];
+    NSEntityDescription * entity = [NSEntityDescription entityForName:@"Speed" inManagedObjectContext:context];
+    [fetchRequest entity];
+    NSError * error = nil;
+    NSArray * fetchObjects = [context executeFetchRequest:fetchRequest error:&error];
+    for (Speed * speed in fetchObjects) {
+        //TODO update the RedTime item;
+        
+    }
+}
++ (void)createSpeedRecord:(NSString *) day
+            setweeklyGoal:(NSNumber *) weeklyGoal
+          setWeeklyActual:(NSNumber *) weeklyActual
+             setDailyGoal:(NSNumber *) dailyGoal
+          setDailyActual:(NSNumber *) dailyActual
+          setLastYearSale:(NSNumber *) lastYearSales {
+    NSManagedObjectContext * context = [[NSManagedObjectContext alloc] init];
+    Speed * speed = [NSEntityDescription insertNewObjectForEntityForName:@"Speed" inManagedObjectContext:context];
+    
+    speed.day = day;
+    speed.weeklygoal = weeklyGoal;
+    speed.weeklyactual = weeklyActual;
+    speed.dailyactual = dailyActual;
+    speed.dailygoal = dailyGoal;
+    speed.lastYearSale = lastYearSales;
+    
+    NSError * error = nil;
+    if([context save: &error]) {
+        NSLog(@ "New record has been save:");
+    } else {
+        NSLog(@"New record was not save!: %@",[error userInfo]);
+    }
+}
++ (void)readRedTimeRecord:(NSString *) day
+            setweeklyGoal:(NSNumber *) weeklyGoal
+          setWeeklyActual:(NSNumber *) weeklyActual
+             setDailyGoal:(NSNumber *) dailyGoal
+          setDailyActual:(NSNumber *) dailyActual
+          setLastYearSale:(NSNumber *) lastYearSales {
+    NSManagedObjectContext * context =  [[NSManagedObjectContext alloc] init];
+    NSFetchRequest * fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription * entity = [NSEntityDescription entityForName:@"Speed" inManagedObjectContext:context];
+    
+    [fetchRequest setEntity:entity];
+    
+    NSError * error = nil;
+    
+    NSArray * fetchObjects = [context executeFetchRequest:fetchRequest error:&error];
+    
+    for(Speed * speed in fetchObjects){
+        //TODO save RedTime item to be use for the view later
+    }
+}
++ (void)deleteRedTimeRecord:(NSString *) day
+              setweeklyGoal:(NSNumber *) weeklyGoal
+            setWeeklyActual:(NSNumber *) weeklyActual
+               setDailyGoal:(NSNumber *) dailyGoal
+            setDailyActual:(NSNumber *) dailyActual
+            setLastYearSale:(NSNumber *) lastYearSales {
+    NSManagedObjectContext * context = [[NSManagedObjectContext alloc] init];
+    NSFetchRequest * fetchRequest = [[NSFetchRequest alloc]init];
+    //TODO if needed to delete record
+    //use NSPredicate * predicate
+    //[fetchRequest setPredicate: predicate]
+    //Set NSError and fetch the Object form array
+    //loop through the array
+    //Grab the record and delete
+    //[context deleleObject:Speed]
+    //Check for error and save the change with [context save:&error]
+    //Log
+}
 @end
