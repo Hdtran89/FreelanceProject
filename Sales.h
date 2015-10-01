@@ -12,10 +12,10 @@
 
 @interface Sales : NSManagedObject
 
-@property (nonatomic, retain) UNKNOWN_TYPE day;
-@property (nonatomic, retain) UNKNOWN_TYPE dailyactualsale;
-@property (nonatomic, retain) UNKNOWN_TYPE dailylastyearsale;
-@property (nonatomic, retain) UNKNOWN_TYPE weeklygoalsale;
-@property (nonatomic, retain) UNKNOWN_TYPE dailygoalsale;
+@property (nonatomic, retain) NSString * day;
+@property (nonatomic, retain) NSNumber * dailyactualsale;
+@property (nonatomic, retain) NSNumber * dailylastyearsale;
+@property (nonatomic, retain) NSNumber * weeklylastyearsale;
+@property (nonatomic, retain) NSNumber * weeklyactualsale;
 
 @end

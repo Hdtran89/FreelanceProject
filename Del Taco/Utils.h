@@ -12,6 +12,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "Speed.h"
 #import "RedTimes.h"
+#import "Sales.h"
 @interface Utils : NSObject
 
 + (CGFloat) getScreenWidth;
@@ -62,26 +63,56 @@
           setWeeklyActual:(NSNumber *) weeklyActual
              setDailyGoal:(NSNumber *) dailyGoal
            setDailyActual:(NSNumber *) dailyActual
-          setLastYearSale:(NSNumber *) lastYearSales ;
+                 setLunch:(BOOL)isLunch
+               setCounter:(BOOL)isCounter;
 
 + (void)createSpeedRecord:(NSString *) day
             setweeklyGoal:(NSNumber *) weeklyGoal
           setWeeklyActual:(NSNumber *) weeklyActual
              setDailyGoal:(NSNumber *) dailyGoal
            setDailyActual:(NSNumber *) dailyActual
-          setLastYearSale:(NSNumber *) lastYearSales ;
+                 setLunch:(BOOL)isLunch
+               setCounter:(BOOL)isCounter;
 
-+ (void)readRedTimeRecord:(NSString *) day
++ (void)readSpeedRecord:(NSString *) day
             setweeklyGoal:(NSNumber *) weeklyGoal
           setWeeklyActual:(NSNumber *) weeklyActual
              setDailyGoal:(NSNumber *) dailyGoal
            setDailyActual:(NSNumber *) dailyActual
-          setLastYearSale:(NSNumber *) lastYearSales ;
+                 setLunch:(BOOL)isLunch
+               setCounter:(BOOL)isCounter;
 
-+ (void)deleteRedTimeRecord:(NSString *) day
++ (void)deleteSpeedRecord:(NSString *) day
               setweeklyGoal:(NSNumber *) weeklyGoal
             setWeeklyActual:(NSNumber *) weeklyActual
                setDailyGoal:(NSNumber *) dailyGoal
              setDailyActual:(NSNumber *) dailyActual
-            setLastYearSale:(NSNumber *) lastYearSales ;
+                   setLunch:(BOOL)isLunch
+                 setCounter:(BOOL)isCounter;
+
+//CRUD for Sales Core Data
++ (void)updateSaleRecord:(NSString *) day
+   setWeeklyLastYearSale:(NSNumber *) weeklyLastYearSale
+     setWeeklyActualSale:(NSNumber *) weeklyActualSale
+      setDailyActualSale:(NSNumber *) dailyActualSale
+    setDailyLastYearSale:(NSNumber *) dailyLastYearSale;
+
++ (void)createSaleRecord:(NSString *) day
+   setWeeklyLastYearSale:(NSNumber *) weeklyLastYearSale
+     setWeeklyActualSale:(NSNumber *) weeklyActualSale
+      setDailyActualSale:(NSNumber *) dailyActualSale
+    setDailyLastYearSale:(NSNumber *) dailyLastYearSale;
+
++ (void)readSaleRecord:(NSString *) day
+ setWeeklyLastYearSale:(NSNumber *) weeklyLastYearSale
+   setWeeklyActualSale:(NSNumber *) weeklyActualSale
+    setDailyActualSale:(NSNumber *) dailyActualSale
+  setDailyLastYearSale:(NSNumber *) dailyLastYearSale;
+
++ (void)deleteSaleRecord:(NSString *) day
+   setWeeklyLastYearSale:(NSNumber *) weeklyLastYearSale
+     setWeeklyActualSale:(NSNumber *) weeklyActualSale
+      setDailyActualSale:(NSNumber *) dailyActualSale
+    setDailyLastYearSale:(NSNumber *) dailyLastYearSale;
+
 @end

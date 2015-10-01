@@ -11,7 +11,7 @@
 		6A05CE631BBC851000A7E858 /* DelTacoModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6A05CE611BBC851000A7E858 /* DelTacoModel.xcdatamodeld */; };
 		6A05CE751BBC986400A7E858 /* RedTimes.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A05CE741BBC986400A7E858 /* RedTimes.m */; };
 		6A5888F51BBDE90900D6151E /* Speed.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A5888F41BBDE90900D6151E /* Speed.m */; };
-		6A5888F81BBDE9B900D6151E /* Sales.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A5888F71BBDE9B900D6151E /* Sales.m */; };
+		6A5889011BBDEF6A00D6151E /* Sales.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A5889001BBDEF6A00D6151E /* Sales.m */; };
 		6A623CC11B97A42E007283E7 /* TacoTab.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A623CC01B97A42E007283E7 /* TacoTab.m */; };
 		6A6CFB8D1B7A75FC00FB25C8 /* redTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6CFB8C1B7A75FC00FB25C8 /* redTimeViewController.m */; };
 		6A6CFB901B7A8FFD00FB25C8 /* CleaningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6CFB8F1B7A8FFD00FB25C8 /* CleaningViewController.m */; };
@@ -66,8 +66,8 @@
 		6A05CE741BBC986400A7E858 /* RedTimes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RedTimes.m; sourceTree = "<group>"; };
 		6A5888F31BBDE90900D6151E /* Speed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Speed.h; sourceTree = "<group>"; };
 		6A5888F41BBDE90900D6151E /* Speed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Speed.m; sourceTree = "<group>"; };
-		6A5888F61BBDE9B900D6151E /* Sales.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sales.h; sourceTree = "<group>"; };
-		6A5888F71BBDE9B900D6151E /* Sales.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sales.m; sourceTree = "<group>"; };
+		6A5888FF1BBDEF6A00D6151E /* Sales.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sales.h; sourceTree = "<group>"; };
+		6A5889001BBDEF6A00D6151E /* Sales.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sales.m; sourceTree = "<group>"; };
 		6A623CBF1B97A42E007283E7 /* TacoTab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TacoTab.h; sourceTree = "<group>"; };
 		6A623CC01B97A42E007283E7 /* TacoTab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TacoTab.m; sourceTree = "<group>"; };
 		6A6CFB8B1B7A75FC00FB25C8 /* redTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = redTimeViewController.h; sourceTree = "<group>"; };
@@ -158,13 +158,13 @@
 		6A5888F91BBDE9BF00D6151E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				6A5888F61BBDE9B900D6151E /* Sales.h */,
-				6A5888F71BBDE9B900D6151E /* Sales.m */,
 				6A5888F31BBDE90900D6151E /* Speed.h */,
 				6A5888F41BBDE90900D6151E /* Speed.m */,
 				6A05CE731BBC986400A7E858 /* RedTimes.h */,
 				6A05CE741BBC986400A7E858 /* RedTimes.m */,
 				6A05CE611BBC851000A7E858 /* DelTacoModel.xcdatamodeld */,
+				6A5888FF1BBDEF6A00D6151E /* Sales.h */,
+				6A5889001BBDEF6A00D6151E /* Sales.m */,
 			);
 			name = Model;
 			path = ..;
@@ -407,7 +407,7 @@
 				6A05CE751BBC986400A7E858 /* RedTimes.m in Sources */,
 				6A5888F51BBDE90900D6151E /* Speed.m in Sources */,
 				6AEAEA331B79402F0043B80B /* guidelinesViewController.m in Sources */,
-				6A5888F81BBDE9B900D6151E /* Sales.m in Sources */,
+				6A5889011BBDEF6A00D6151E /* Sales.m in Sources */,
 				6A6CFB901B7A8FFD00FB25C8 /* CleaningViewController.m in Sources */,
 				6A623CC11B97A42E007283E7 /* TacoTab.m in Sources */,
 				6AEAF4C61B75604300E9A8A5 /* AppDelegate.m in Sources */,

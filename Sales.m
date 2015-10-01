@@ -14,7 +14,7 @@
 @dynamic day;
 @dynamic dailyactualsale;
 @dynamic dailylastyearsale;
-@dynamic weeklygoalsale;
-@dynamic dailygoalsale;
+@dynamic weeklylastyearsale;
+@dynamic weeklyactualsale;
 
 @end
