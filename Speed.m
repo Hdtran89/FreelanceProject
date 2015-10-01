@@ -12,10 +12,11 @@
 @implementation Speed
 
 @dynamic weeklygoal;
-@dynamic lastYearSale;
 @dynamic dailygoal;
 @dynamic weeklyactual;
 @dynamic dailyactual;
 @dynamic day;
+@dynamic islunch;
+@dynamic iscounter;
 
 @end

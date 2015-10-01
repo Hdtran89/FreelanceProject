@@ -1258,7 +1258,13 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
                 [textField setEnabled:NO];
                 [textField setBackgroundColor:[UIColor grayColor]];
             }
-            
+           if(tag >= 0 && tag < 8){
+               
+           }
+           if(tag >= 10 && tag < 19){
+               
+           }
+
         } else {
             actual = [[textField text] integerValue];
             if ([textField.text rangeOfCharacterFromSet:notDigits].location != NSNotFound) {

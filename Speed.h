@@ -13,10 +13,11 @@
 @interface Speed : NSManagedObject
 
 @property (nonatomic, retain) NSNumber * weeklygoal;
-@property (nonatomic, retain) NSNumber * lastYearSale;
 @property (nonatomic, retain) NSNumber * dailygoal;
 @property (nonatomic, retain) NSNumber * weeklyactual;
 @property (nonatomic, retain) NSNumber * dailyactual;
 @property (nonatomic, retain) NSString * day;
+@property (nonatomic, retain) NSNumber * islunch;
+@property (nonatomic, retain) NSNumber * iscounter;
 
 @end
