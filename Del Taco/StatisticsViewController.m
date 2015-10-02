@@ -111,7 +111,12 @@
     NSNumber * dailygoal;
     NSNumber * dailyactual;
     NSString * day;
-    NSNumber * lastyear;
+    NSNumber * dailylastyearsale;
+    NSNumber * weeklylastyearsale;
+    NSNumber * dailyactualsale;
+    NSNumber * weeklyactualsale;
+    bool lunch;
+    bool counter;
 }
 
 @end
@@ -1243,7 +1248,6 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     
     int tag = textField.tag;
-    
     //TODO Save the Goal into Core Data to Populate FrontScreen..
     //GOAL is an INT
     if (isSpeed){
@@ -1258,21 +1262,161 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
                 [textField setEnabled:NO];
                 [textField setBackgroundColor:[UIColor grayColor]];
             }
-           if(tag >= 0 && tag < 8){
-               
-           }
-           if(tag >= 10 && tag < 19){
-               
-           }
-
+ 
+            switch (tag) {
+                case 0:
+                case 10:
+                case 20:
+                case 30:
+                    if (tag == 0 && tag == 10) {
+                        lunch = YES;
+                        if (tag == 10) {
+                            counter = YES;
+                        }
+                        else{
+                            lunch = NO;
+                            counter = NO;
+                        }
+                    }
+                    day = @"Wednesday";
+                    break;
+                case 1:
+                case 11:
+                case 21:
+                case 31:
+                    if (tag == 1 && tag == 11) {
+                        lunch = YES;
+                        if (tag == 11) {
+                            counter = YES;
+                        }
+                        else{
+                            lunch = NO;
+                            counter = NO;
+                        }
+                    }
+                    day = @"Thursday";
+                    break;
+                case 2:
+                case 12:
+                case 22:
+                case 32:
+                    if (tag == 2 && tag == 12) {
+                        lunch = YES;
+                        if (tag == 12) {
+                            counter = YES;
+                        }
+                        else{
+                            lunch = NO;
+                            counter = NO;
+                        }
+                    }
+                    day = @"Friday";
+                    break;
+                case 3:
+                case 13:
+                case 23:
+                case 33:
+                    if (tag == 3 && tag == 13) {
+                        lunch = YES;
+                        if (tag == 13) {
+                            counter = YES;
+                        }
+                        else{
+                            lunch = NO;
+                            counter = NO;
+                        }
+                    }
+                    day = @"Saturday";
+                    break;
+                case 4:
+                case 14:
+                case 24:
+                case 34:
+                    if (tag == 4 && tag == 14) {
+                        lunch = YES;
+                        if (tag == 14) {
+                            counter = YES;
+                        }
+                        else{
+                            lunch = NO;
+                            counter = NO;
+                        }
+                    }
+                    day = @"Sunday";
+                    break;
+                case 5:
+                case 15:
+                case 25:
+                case 35:
+                    if (tag == 5 && tag == 15) {
+                        lunch = YES;
+                        if (tag == 15) {
+                            counter = YES;
+                        }
+                        else{
+                            lunch = NO;
+                            counter = NO;
+                        }
+                    }
+                    day = @"Monday";
+                    break;
+                case 6:
+                case 16:
+                case 26:
+                case 36:
+                    if (tag == 6 && tag == 16) {
+                        lunch = YES;
+                        if (tag == 16) {
+                            counter = YES;
+                        }
+                        else{
+                            lunch = NO;
+                            counter = NO;
+                        }
+                    }
+                    day = @"Tuesday";
+                    break;
+                case 7:
+                case 17:
+                case 27:
+                case 37:
+                    if (tag == 7 && tag == 17) {
+                        lunch = YES;
+                        if (tag == 17) {
+                            counter = YES;
+                        }
+                        else{
+                            lunch = NO;
+                            counter = NO;
+                        }
+                    }
+                    day = @"Week";
+                    break;
+                default:
+                    break;
+            }
+            dailygoal = [NSNumber numberWithInt:goal ];
+            
+            if(tag == 17 || tag == 27 || tag == 37 || tag == 47){
+                weeklygoal = [NSNumber numberWithInt:goal];
+            }
         } else {
             actual = [[textField text] integerValue];
             if ([textField.text rangeOfCharacterFromSet:notDigits].location != NSNotFound) {
                 [self alertForMisFormedText];
                 [textField setText:@""];
             }
+            
+            dailyactual = [NSNumber numberWithInt:actual];
+            
+            if(tag == 47 || tag == 57 || tag == 67 || tag == 77){
+                weeklyactual = [NSNumber numberWithInt:actual];
+            }
         }
         
+
+        
+
         
         /** In loadSpeedLabels, UILabels were added to the NSMutableArray winLoseLabels. 
           * Tags of each element were set to the same as the goal tag of the corresponding textbox. 
@@ -1308,6 +1452,7 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
     } else if (isSales) {
         //TODO:: SAVE last Year Sales from a FLOAT value to populate front screen
         if (tag < 40) {
+            NSLog(@"Tag: %i", tag);
             lastYearSales = [[textField text] floatValue];
             if (lastYearSales <= 0.00) {
                 [self alertForMisFormedText];
@@ -1399,6 +1544,34 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
         
     }
 }
+-(void)viewDidAppear:(BOOL)animated {
+    
+//    if(isSpeed){
+//        NSLog(@"Day: %@", day);
+//        NSLog(@"Goal: %@", dailygoal);
+//        NSLog(@"Actual: %@", dailyactual);
+//        NSLog(lunch ? @"Dinner" : @"Lunch");
+//        NSLog(counter ? @"Drive-Thru" : @"Counter");
+//        
+//        [Utils createSpeedRecord:day
+//                   setweeklyGoal:weeklygoal
+//                 setWeeklyActual:weeklyactual
+//                    setDailyGoal:dailygoal
+//                  setDailyActual:dailyactual
+//                        setLunch:lunch
+//                      setCounter:counter];
+//    } else if (isService) {
+//        
+//    } else if(isSales) {
+//        [Utils createSpeedRecord:day
+//                   setweeklyGoal:weeklygoal
+//                 setWeeklyActual:weeklyactual
+//                    setDailyGoal:dailygoal
+//                  setDailyActual:dailyactual
+//                        setLunch:lunch
+//                      setCounter:counter];
+//    }
 
+}
 
 @end

@@ -12,6 +12,8 @@
 //TEXTFIELDS RESET ON SEGMENT SWITCH (PROPOSED FIX: MOVE INITIALIZATION CODE OUTSIDE OF TACOBAR BLOCK AND MAKE IT UNIVERSAL.
 
 #import "redTimeViewController.h"
+
+
 @interface redTimeViewController () {
     UIView *drinkStationView;
     UIView *tacoBarView;
@@ -74,11 +76,16 @@
     NSString * itemname;
     NSDate * datetime;
     Boolean otherOption;
+    
 }
+
 
 @end
 
+
 @implementation redTimeViewController
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -1213,10 +1220,7 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
     
     //Save to the Core Data
     datetime = newDate;
-    [Utils createRedTimeRecord:itemname
-                   setDateTime:datetime
-                    checkOther:otherOption];
-    
+
     [self showAlertForRedTimeInput:output];
     
     NSLog(@"new date: %@", output);
@@ -1361,5 +1365,12 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
     [self dismissViewControllerAnimated:YES completion:NULL];
     
 }
-
+@synthesize delegate;
+-(void)viewDidAppear:(BOOL)animated {
+   // [delegate sendDataToDisplayScreen:]
+//    [Utils createRedTimeRecord:itemname
+//                   setDateTime:datetime
+//                    checkOther:otherOption];
+    
+}
 @end

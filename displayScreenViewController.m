@@ -60,6 +60,9 @@
 //    
 //    viewFrame = CGRectMake(xMargin, yMargin, totalEffectiveWidth, totalEffectiveHeight);
 //
+    UITabBarItem * tabBarItem = [[UITabBarItem alloc]initWithTitle:@"" image:[UIImage imageNamed:@"displayTab"] tag:1];
+    self.tabBarItem = tabBarItem;
+    
     self.winLoseLabel.hidden = YES;
     self.lunchLabel.hidden = YES;
     self.dayLabel.hidden = YES;

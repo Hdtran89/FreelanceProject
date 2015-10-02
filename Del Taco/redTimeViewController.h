@@ -11,6 +11,10 @@
 #import <MessageUI/MessageUI.h>
 #import "RedTimes.h"
 
+@protocol sendDataProtocol <NSObject>
+-(void) sendDataToDisplayScreen:(NSMutableDictionary *) redData;
+@end
+
 @interface redTimeViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIGestureRecognizerDelegate, UIApplicationDelegate, MFMailComposeViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 - (IBAction)segmentSwitch:(id)sender;
@@ -28,6 +32,7 @@
 
 - (IBAction)refreshAction:(id)sender;
 
+@property(nonatomic,assign)id delegate;
 
 
 @end
