@@ -1554,10 +1554,10 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
         NSLog(@"Actual: %@", dailyactual);
         NSLog(lunch ? @"Dinner" : @"Lunch");
         NSLog(counter ? @"Drive-Thru" : @"Counter");
-
-        NSManagedObjectContext * context = [self managedObjectContext];
+        AppDelegate * appDelegate = [[UIApplication sharedApplication] delegate];
+        NSManagedObjectContext * context = [appDelegate managedObjectContext];
         Speed * speed = [NSEntityDescription insertNewObjectForEntityForName:@"Speed" inManagedObjectContext:context];
-        speed.day  = day;
+        speed.day = day;
         speed.weeklygoal = weeklygoal;
         speed.dailygoal = dailygoal;
         speed.dailyactual = dailyactual;

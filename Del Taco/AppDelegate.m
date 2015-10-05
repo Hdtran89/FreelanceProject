@@ -155,7 +155,7 @@
     if (_persistentStoreCoordinator != nil) {
         return _persistentStoreCoordinator;
     }
-    
+    //TODO; set the correct path to create the file to be save
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"Del_Taco.sqlite"];
     
     NSError *error = nil;

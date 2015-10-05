@@ -10,7 +10,7 @@
 #import "Utils.h"
 #import <MessageUI/MessageUI.h>
 #import "Speed.h"
-
+#import "AppDelegate.h"
 @interface StatisticsViewController : UIViewController <UIGestureRecognizerDelegate, UITextFieldDelegate, MFMailComposeViewControllerDelegate, UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 - (IBAction)segmentSwitch:(id)sender;
