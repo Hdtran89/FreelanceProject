@@ -16,6 +16,7 @@
 		6A6CFB8D1B7A75FC00FB25C8 /* redTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6CFB8C1B7A75FC00FB25C8 /* redTimeViewController.m */; };
 		6A6CFB901B7A8FFD00FB25C8 /* CleaningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6CFB8F1B7A8FFD00FB25C8 /* CleaningViewController.m */; };
 		6AE6F8111B910A7F002198ED /* StatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AE6F8101B910A7F002198ED /* StatisticsViewController.m */; };
+		6AE93ADC1BC316F800216070 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AE93ADB1BC316F800216070 /* CoreData.framework */; };
 		6AE974D01B8E406200794937 /* DeploymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AE974CF1B8E406200794937 /* DeploymentViewController.m */; };
 		6AE9B9D11BA773DD00276B76 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AE9B9CF1BA773DD00276B76 /* Fabric.framework */; };
 		6AE9B9D21BA773DD00276B76 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AE9B9D01BA773DD00276B76 /* Crashlytics.framework */; };
@@ -77,6 +78,7 @@
 		6AE6F80F1B910A7F002198ED /* StatisticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticsViewController.h; sourceTree = "<group>"; };
 		6AE6F8101B910A7F002198ED /* StatisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticsViewController.m; sourceTree = "<group>"; };
 		6AE883251BBF419400DDC98D /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		6AE93ADB1BC316F800216070 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		6AE974CE1B8E406200794937 /* DeploymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeploymentViewController.h; sourceTree = "<group>"; };
 		6AE974CF1B8E406200794937 /* DeploymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeploymentViewController.m; sourceTree = "<group>"; };
 		6AE9B9CF1BA773DD00276B76 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AE93ADC1BC316F800216070 /* CoreData.framework in Frameworks */,
 				6AF4F2AF1B7E838700DFAA8C /* Social.framework in Frameworks */,
 				6AF4F2AD1B7E838300DFAA8C /* Accounts.framework in Frameworks */,
 				6AF4F2AB1B7E830100DFAA8C /* libsqlite3.dylib in Frameworks */,
@@ -212,6 +215,7 @@
 		6AEAF4B41B75604300E9A8A5 = {
 			isa = PBXGroup;
 			children = (
+				6AE93ADB1BC316F800216070 /* CoreData.framework */,
 				6AE9B9CF1BA773DD00276B76 /* Fabric.framework */,
 				6AE9B9D01BA773DD00276B76 /* Crashlytics.framework */,
 				6AF4F2AE1B7E838700DFAA8C /* Social.framework */,

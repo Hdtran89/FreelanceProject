@@ -93,13 +93,14 @@ BOOL isAdmin;
     isAdmin = isLoggedIn;
 }
 //CRUD TO USE FOR CORE DATA
-@synthesize managedObjectContext = _managedObjectContext;
-@synthesize managedObjectModel = _managedObjectModel;
-@synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+//@synthesize managedObjectContext = _managedObjectContext;
+//@synthesize managedObjectModel = _managedObjectModel;
+//@synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 //CRUD REDTIME
+
 + (void)createRedTimeRecord: (NSString *) item
-         setDateTime:(NSDate *) dateTime
-          checkOther:(BOOL) isOther;{
+                setDateTime:(NSDate *) dateTime
+                 checkOther:(BOOL) isOther;{
     NSManagedObjectContext * context = [[NSManagedObjectContext alloc] init];
     RedTimes * redtimes = [NSEntityDescription insertNewObjectForEntityForName:@"RedTimes" inManagedObjectContext:context];
     
@@ -109,7 +110,7 @@ BOOL isAdmin;
         redtimes.other = [NSNumber numberWithBool:YES];
     else
         redtimes.other = [NSNumber numberWithBool:NO];
-
+    
     NSError * error = nil;
     if([context save: &error]) {
         NSLog(@ "New record has been save:");
@@ -119,11 +120,11 @@ BOOL isAdmin;
     
 }
 + (void)updateRedTimeRecord: (BOOL)isSpeed
-         setDateTime:(NSDate *) dateTime
-         setItemName:(NSString *) item
-          checkOther:(BOOL) isOther
-             setGoal:(NSNumber *) goalNum
-     setLastYearSale:(NSNumber *) lastYearSales ; {
+                setDateTime:(NSDate *) dateTime
+                setItemName:(NSString *) item
+                 checkOther:(BOOL) isOther
+                    setGoal:(NSNumber *) goalNum
+            setLastYearSale:(NSNumber *) lastYearSales ; {
     NSManagedObjectContext * context = [[NSManagedObjectContext alloc] init];
     NSFetchRequest * fetchRequest = [[NSFetchRequest alloc]init];
     NSEntityDescription * entity = [NSEntityDescription entityForName:@"RedTimes" inManagedObjectContext:context];
@@ -136,11 +137,11 @@ BOOL isAdmin;
     }
 }
 + (void)deleteRedTimeRecord: (BOOL)isSpeed
-         setDateTime:(NSDate *) dateTime
-         setItemName:(NSString *) item
-          checkOther:(BOOL) isOther
-             setGoal:(NSNumber *) goalNum
-     setLastYearSale:(NSNumber *) lastYearSales ; {
+                setDateTime:(NSDate *) dateTime
+                setItemName:(NSString *) item
+                 checkOther:(BOOL) isOther
+                    setGoal:(NSNumber *) goalNum
+            setLastYearSale:(NSNumber *) lastYearSales ; {
     NSManagedObjectContext * context = [[NSManagedObjectContext alloc] init];
     NSFetchRequest * fetchRequest = [[NSFetchRequest alloc]init];
     //TODO if needed to delete record
@@ -154,18 +155,18 @@ BOOL isAdmin;
     //Log
     
 }
-+(void)readRedTimeRecord: (BOOL)isSpeed
-      setDateTime:(NSDate *) dateTime
-      setItemName:(NSString *) item
-       checkOther:(BOOL) isOther
-          setGoal:(NSNumber *) goalNum
-  setLastYearSale:(NSNumber *) lastYearSales ; {
++ (void)readRedTimeRecord: (BOOL)isSpeed
+              setDateTime:(NSDate *) dateTime
+              setItemName:(NSString *) item
+               checkOther:(BOOL) isOther
+                  setGoal:(NSNumber *) goalNum
+          setLastYearSale:(NSNumber *) lastYearSales ; {
     NSManagedObjectContext * context =  [[NSManagedObjectContext alloc] init];
     NSFetchRequest * fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription * entity = [NSEntityDescription entityForName:@"RedTimes" inManagedObjectContext:context];
     
     [fetchRequest setEntity:entity];
-   
+    
     NSError * error = nil;
     
     NSArray * fetchObjects = [context executeFetchRequest:fetchRequest error:&error];
@@ -200,8 +201,10 @@ BOOL isAdmin;
            setDailyActual:(NSNumber *) dailyActual
                  setLunch:(BOOL)isLunch
                setCounter:(BOOL)isCounter {
-    NSManagedObjectContext * context = [[NSManagedObjectContext alloc] init];
-    Speed * speed = [NSEntityDescription insertNewObjectForEntityForName:@"Speed" inManagedObjectContext:context];
+    
+    NSManagedObjectContext * context = nil;
+    Speed * speed = [NSEntityDescription insertNewObjectForEntityForName:@"Speed"
+                                                  inManagedObjectContext:context];
     
     speed.day = day;
     speed.weeklygoal = weeklyGoal;
@@ -226,7 +229,7 @@ BOOL isAdmin;
         NSLog(@"New record was not save!: %@",[error userInfo]);
     }
 }
-+ (void)readRedTimeRecord:(NSString *) day
+- (void)readRedTimeRecord:(NSString *) day
             setweeklyGoal:(NSNumber *) weeklyGoal
           setWeeklyActual:(NSNumber *) weeklyActual
              setDailyGoal:(NSNumber *) dailyGoal
@@ -273,7 +276,7 @@ BOOL isAdmin;
      setWeeklyActualSale:(NSNumber *) weeklyActualSale
       setDailyActualSale:(NSNumber *) dailyActualSale
     setDailyLastYearSale:(NSNumber *) dailyLastYearSale; {
-
+    
     NSManagedObjectContext * context = [[NSManagedObjectContext alloc] init];
     NSFetchRequest * fetchRequest = [[NSFetchRequest alloc]init];
     NSEntityDescription * entity = [NSEntityDescription entityForName:@"Sale" inManagedObjectContext:context];
@@ -345,4 +348,5 @@ BOOL isAdmin;
     //Check for error and save the change with [context save:&error]
     //Log
 }
+
 @end

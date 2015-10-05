@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "Utils.h"
 #import <MessageUI/MessageUI.h>
+#import "Speed.h"
+
 @interface StatisticsViewController : UIViewController <UIGestureRecognizerDelegate, UITextFieldDelegate, MFMailComposeViewControllerDelegate, UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 - (IBAction)segmentSwitch:(id)sender;
@@ -16,5 +18,5 @@
 @property (strong, nonatomic) UIWindow *window;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *reportButton;
 - (IBAction)refreshAction:(id)sender;
-
+@property (nonatomic, strong) NSManagedObjectContext * managedObjectContext;
 @end

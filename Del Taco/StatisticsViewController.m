@@ -117,11 +117,13 @@
     NSNumber * weeklyactualsale;
     bool lunch;
     bool counter;
+    
 }
 
 @end
 
 @implementation StatisticsViewController
+@synthesize managedObjectContext;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -1544,15 +1546,38 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
         
     }
 }
--(void)viewDidAppear:(BOOL)animated {
+-(void)viewWillDisappear:(BOOL)animated {
     
-//    if(isSpeed){
-//        NSLog(@"Day: %@", day);
-//        NSLog(@"Goal: %@", dailygoal);
-//        NSLog(@"Actual: %@", dailyactual);
-//        NSLog(lunch ? @"Dinner" : @"Lunch");
-//        NSLog(counter ? @"Drive-Thru" : @"Counter");
-//        
+    if(isSpeed){
+        NSLog(@"Day: %@", day);
+        NSLog(@"Goal: %@", dailygoal);
+        NSLog(@"Actual: %@", dailyactual);
+        NSLog(lunch ? @"Dinner" : @"Lunch");
+        NSLog(counter ? @"Drive-Thru" : @"Counter");
+
+        NSManagedObjectContext * context = [self managedObjectContext];
+        Speed * speed = [NSEntityDescription insertNewObjectForEntityForName:@"Speed" inManagedObjectContext:context];
+        speed.day  = day;
+        speed.weeklygoal = weeklygoal;
+        speed.dailygoal = dailygoal;
+        speed.dailyactual = dailyactual;
+        speed.weeklyactual = weeklyactual;
+        if(lunch == 1)
+            speed.islunch = [NSNumber numberWithBool:YES];
+        else
+            speed.islunch = [NSNumber numberWithBool:NO];
+        
+        if(counter == 1)
+            speed.iscounter = [NSNumber numberWithBool:YES];
+        else
+            speed.iscounter = [NSNumber numberWithBool:NO];
+        
+        NSError * error = nil;
+        if([context save: &error]) {
+            NSLog(@ "New record has been save:");
+        } else {
+            NSLog(@"New record was not save!: %@",[error userInfo]);
+        }
 //        [Utils createSpeedRecord:day
 //                   setweeklyGoal:weeklygoal
 //                 setWeeklyActual:weeklyactual
@@ -1570,7 +1595,7 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
 //                  setDailyActual:dailyactual
 //                        setLunch:lunch
 //                      setCounter:counter];
-//    }
+    }
 
 }
 
