@@ -1368,9 +1368,9 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
 @synthesize delegate;
 -(void)viewWillDisappear:(BOOL)animated {
  //   [delegate sendDataToDisplayScreen:]
-    [Utils createRedTimeRecord:itemname
-                  setDateTime:datetime
-                   checkOther:otherOption];
+//    [Utils createRedTimeRecord:itemname
+//                  setDateTime:datetime
+//                   checkOther:otherOption];
     
 }
 @end

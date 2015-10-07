@@ -15,6 +15,7 @@
 		6A623CC11B97A42E007283E7 /* TacoTab.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A623CC01B97A42E007283E7 /* TacoTab.m */; };
 		6A6CFB8D1B7A75FC00FB25C8 /* redTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6CFB8C1B7A75FC00FB25C8 /* redTimeViewController.m */; };
 		6A6CFB901B7A8FFD00FB25C8 /* CleaningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6CFB8F1B7A8FFD00FB25C8 /* CleaningViewController.m */; };
+		6A7EBE161BC5B9CE00A33361 /* PersistenceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7EBE151BC5B9CE00A33361 /* PersistenceController.m */; };
 		6AE6F8111B910A7F002198ED /* StatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AE6F8101B910A7F002198ED /* StatisticsViewController.m */; };
 		6AE93ADC1BC316F800216070 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AE93ADB1BC316F800216070 /* CoreData.framework */; };
 		6AE974D01B8E406200794937 /* DeploymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AE974CF1B8E406200794937 /* DeploymentViewController.m */; };
@@ -75,6 +76,8 @@
 		6A6CFB8C1B7A75FC00FB25C8 /* redTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = redTimeViewController.m; sourceTree = "<group>"; };
 		6A6CFB8E1B7A8FFD00FB25C8 /* CleaningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CleaningViewController.h; sourceTree = "<group>"; };
 		6A6CFB8F1B7A8FFD00FB25C8 /* CleaningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CleaningViewController.m; sourceTree = "<group>"; };
+		6A7EBE141BC5B9A300A33361 /* PersistenceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersistenceController.h; sourceTree = "<group>"; };
+		6A7EBE151BC5B9CE00A33361 /* PersistenceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersistenceController.m; sourceTree = "<group>"; };
 		6AE6F80F1B910A7F002198ED /* StatisticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticsViewController.h; sourceTree = "<group>"; };
 		6AE6F8101B910A7F002198ED /* StatisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticsViewController.m; sourceTree = "<group>"; };
 		6AE883251BBF419400DDC98D /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -168,6 +171,8 @@
 				6A05CE611BBC851000A7E858 /* DelTacoModel.xcdatamodeld */,
 				6A5888FF1BBDEF6A00D6151E /* Sales.h */,
 				6A5889001BBDEF6A00D6151E /* Sales.m */,
+				6A7EBE141BC5B9A300A33361 /* PersistenceController.h */,
+				6A7EBE151BC5B9CE00A33361 /* PersistenceController.m */,
 			);
 			name = Model;
 			path = ..;
@@ -407,6 +412,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6AF4F28F1B7E771700DFAA8C /* LoginViewController.m in Sources */,
+				6A7EBE161BC5B9CE00A33361 /* PersistenceController.m in Sources */,
 				6AEAF4C91B75604300E9A8A5 /* ViewController.m in Sources */,
 				6A05CE751BBC986400A7E858 /* RedTimes.m in Sources */,
 				6A5888F51BBDE90900D6151E /* Speed.m in Sources */,
