@@ -1406,14 +1406,15 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
 }
 -(void)passDataBackward
 {
+     #pragma clang diagnostic ignored "-Wundeclared-selector"
     if([_redTimeDelegate respondsToSelector:@selector(dataFromRedTimeController:)])
     {
-        [_redTimeDelegate dataRedTimeFromController:_record];
+        [_redTimeDelegate dataRedTimeFromController:_redTime];
     }
-   // displayScreenViewController * display = [[displayScreenViewController alloc ]init];
-    
-
-  //  [self.navigationController pushViewController:display animated:YES];
+   // NSString * storyboardName = @"Main";
+   // UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
+  //  UIViewController * display = [storyboard instantiateViewControllerWithIdentifier:@"displayScreen"];
+  //  [self presentViewController:display animated:YES completion:nil];
 }
 
 @end

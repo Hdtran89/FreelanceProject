@@ -1586,13 +1586,30 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
     {
         if(buttonIndex == 0)
         {
-            [self passDataForward];
+            //[self passDataForward];
+            if (isSpeed) {
+                self.speed.day = day;
+                self.speed.dailyactual = dailyactual;
+                self.speed.weeklyactual = weeklyactual;
+                self.speed.dailygoal = dailygoal;
+                self.speed.weeklygoal = weeklygoal;
+                
+                [self passSpeedData];
+            }
+            else if (isSales){
+                self.sale.dailyactualsale = dailyactualsale;
+                self.sale.dailylastyearsale = dailylastyearsale;
+                self.sale.weeklyactualsale = weeklyactualsale;
+                self.sale.weeklylastyearsale = weeklylastyearsale;
+                self.sale.day = day;
+                [self passSaleData];
+            }
         }
     }
 }
 -(void)passDataForward
 {
-    displayScreenViewController * display = [[displayScreenViewController alloc ]init];
+    //displayScreenViewController * display = [[displayScreenViewController alloc ]init];
     
     if (isSpeed)
     {
@@ -1616,7 +1633,7 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
             speed.iscounter = [NSNumber numberWithBool:NO];
         }
         
-        display._speed = speed;
+        //display.speed = speed;
     }
     else if (isSales)
     {
@@ -1636,16 +1653,26 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
 
 -(void)passSpeedData
 {
+    #pragma clang diagnostic ignored "-Wundeclared-selector"
     if([_statisticDelegate respondsToSelector:@selector(speedDataFromController)])
     {
-        [_statisticDelegate speedDataFromController:self.speed];
+        [_statisticDelegate speedDataFromController];
     }
+   // NSString * storyboardName = @"MainStoryboard";
+   // UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
+   // UIViewController * display = [storyboard instantiateViewControllerWithIdentifier:@"displayScreen"];
+   // [self presentViewController:display animated:YES completion:nil];
 }
 -(void)passSaleData
 {
+    #pragma clang diagnostic ignored "-Wundeclared-selector"
     if([_statisticDelegate respondsToSelector:@selector(speedDataFromController)])
     {
-        [_statisticDelegate saleDataFromController:self.sale];
+        [_statisticDelegate saleDataFromController];
     }
+   // NSString * storyboardName = @"MainStoryboard";
+  //  UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
+  //  UIViewController * display = [storyboard instantiateViewControllerWithIdentifier:@"displayScreen"];
+  //  [self presentViewController:display animated:YES completion:nil];
 }
 @end

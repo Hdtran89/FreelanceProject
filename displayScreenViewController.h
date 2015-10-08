@@ -39,11 +39,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *tacoBarEndingSoon4;
 @property (weak, nonatomic) IBOutlet UILabel *tacoBarEndingSoon5;
 
-@property(nonatomic, retain) RedTimes *_redtimes;
-@property(nonatomic, retain) Speed *_speed;
-@property(nonatomic, retain) Sales *_sale;
--(void)dataRedTimeFromController:(RedTimes *) record;
--(void)speedDataFromController:(Speed *) record;
--(void)saleDataFromController:(Sales *) record;
+-(RedTimes *)dataRedTimeFromController;
+-(Speed *)speedDataFromController;
+-(Sales *)saleDataFromController;
 
 @end

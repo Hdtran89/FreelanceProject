@@ -5,11 +5,12 @@
 //  Created by iOSDev on 9/25/15.
 //  Copyright (c) 2015 United Tax. All rights reserved.
 //
-@protocol RedTimeDelegate;
-@class redTimeViewController;
+//@protocol RedTimeDelegate;
+//@class redTimeViewController;
 
-@class StatisticsViewController;
-@protocol StatisticDelegate;
+//@protocol StatisticDelegate;
+//@class StatisticsViewController;
+
 
 #import "displayScreenViewController.h"
 
@@ -54,9 +55,7 @@
 @end
 
 @implementation displayScreenViewController
-@synthesize _speed;
-@synthesize _sale;
-@synthesize _redtimes;
+
 
 -(void)viewDidLoad {
 //    WidthScreen = [Utils getScreenWidth];
@@ -88,8 +87,6 @@
     self.tacoBarEndingSoon4.hidden = YES;
     self.tacoBarEndingSoon5.hidden = YES;
     
-    NSLog(@"speed goal : %@",_speed.dailygoal );
-    
     [self loadSpeedColumn];
   //  [self loadRedTimeColumn];
 }
@@ -113,11 +110,11 @@
     
   //  [self.speedLabel setFont:[UIFont systemFontOfSize:30]];
     self.speedLabel.adjustsFontSizeToFitWidth = YES;
-    if(_speed.dailygoal != NULL)
-    {
-        self.goalLabel.text = [@"Daily Goal: " stringByAppendingString:(NSString*)_speed.dailygoal];
-        self.goalLabel.adjustsFontSizeToFitWidth = YES;
-    }
+//    if(_speed.dailygoal != NULL)
+//    {
+//        self.goalLabel.text = [@"Daily Goal: " stringByAppendingString:(NSString*)_speed.dailygoal];
+//        self.goalLabel.adjustsFontSizeToFitWidth = YES;
+//    }
    // [self.goalLabel setFont:[UIFont systemFontOfSize:24]];
     
     //TODO Set the Goal from the item input;
@@ -148,14 +145,41 @@
   //  [self.tacoBarLabel setFont:[UIFont systemFontOfSize:30]];
     //TODO Set the top 5 Taco Time about to end;
 }
-
--(void)dataRedTimeFromController:(RedTimes *) record{
-    self.prepTimeEndingSoon1.text = [@"Time Ending: " stringByAppendingString:(NSString *)record.date];
+-(void)viewWillAppear:(BOOL)animated
+{
+//    if(_redtimes != NULL && _speed != NULL && _sale != NULL)
+//    {
+//        [self dataRedTimeFromController: _redtimes];
+//        [self speedDataFromController:_speed];
+//        [self saleDataFromController:_sale];
+//    }
+//    else{
+//        NSLog(@"All object are NULL");
+//    }
 }
--(void)speedDataFromController:(Speed *) record {
-    self.goalLabel.text = [@"Daily Goal: " stringByAppendingString:(NSString*)record.dailygoal];
+-(RedTimes *)dataRedTimeFromController
+{
+   // redTimeViewController * red = [[redTimeViewController alloc]init];
+  //  red.redTimeDelegate = self;
+    NSLog(@"method call redtime");
+    return self.redTime;
+   // self.prepTimeEndingSoon1.text = [@"Time Ending: " stringByAppendingString:(NSString *)record.date];
 }
--(void)saleDataFromController:(Sales *) record {
-    self.lastYearSaleLabel.text = [@"Last Year Daily Sale: " stringByAppendingString:(NSString*)record.dailylastyearsale];
+-(Speed *)speedDataFromController
+{
+   // StatisticsViewController * stat = [[StatisticsViewController alloc]init];
+  //  stat.statisticDelegate = self;
+    NSLog(@"method call speeed");
+    
+    return self.speed;
+    //self.goalLabel.text = [@"Daily Goal: " stringByAppendingString:(NSString*)record.dailygoal];
+}
+-(Sales *)saleDataFromController
+{
+   // StatisticsViewController * stat = [[StatisticsViewController alloc]init];
+   // stat.statisticDelegate = self;
+    NSLog(@"method call sale");
+    return self.sale;
+    //self.lastYearSaleLabel.text = [@"Last Year Daily Sale: " stringByAppendingString:(NSString*)record.dailylastyearsale];
 }
 @end

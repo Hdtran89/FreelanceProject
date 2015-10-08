@@ -13,14 +13,14 @@
 #import "AppDelegate.h"
 #import "displayScreenViewController.h"
 #import "Sales.h"
+@class Speed, Sales;
 
-@protocol StatisticDelegate;
 @protocol StatisticDelegate <NSObject>
-
--(void)speedDataFromController:(Speed *) record;
--(void)saleDataFromController:(Sales *) record;
-
+@required
+-(Speed *)speedDataFromController;
+-(Sales *)saleDataFromController;
 @end
+
 @interface StatisticsViewController : UIViewController <UIGestureRecognizerDelegate, UITextFieldDelegate, MFMailComposeViewControllerDelegate, UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 - (IBAction)segmentSwitch:(id)sender;
@@ -33,7 +33,7 @@
 @property(nonatomic, retain)Speed * speed;
 @property(nonatomic, retain)Sales * sale;
 
-@property(nonatomic, weak) id<StatisticDelegate> statisticDelegate;
--(void)passSpeedData;
--(void)passSaleData;
+@property(nonatomic, strong) id<StatisticDelegate> statisticDelegate;
+//-(void)passSpeedData;
+//-(void)passSaleData;
 @end

@@ -14,9 +14,10 @@
 //@protocol sendDataProtocol <NSObject>
 //-(void) sendDataToDisplayScreen:(NSMutableDictionary *) redData;
 //@end
-@protocol RedTimeDelegate;
+@class RedTimes;
 @protocol RedTimeDelegate <NSObject>
--(void)dataRedTimeFromController:(RedTimes *) record;
+@required
+-(RedTimes *) dataRedTimeFromController;
 @end
 
 @interface redTimeViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIGestureRecognizerDelegate, UIApplicationDelegate, MFMailComposeViewControllerDelegate>
@@ -26,16 +27,14 @@
 @property (copy, nonatomic) NSArray *prepRedTimeChartItems;
 @property (copy, nonatomic) NSArray *prepRedTimeChartTimes;
 @property (strong, nonatomic) UIWindow *window;
-
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *refreshBtn;
 
-@property (strong, nonatomic)RedTimes * record;
-@property (strong, nonatomic)NSManagedObjectContext * managedObjectContext;
-
 - (IBAction)sendReport:(id)sender;
-
 - (IBAction)refreshAction:(id)sender;
 
-@property (nonatomic, weak) id<RedTimeDelegate> redTimeDelegate;
--(void)passDataBackward;
+@property (strong, nonatomic)NSManagedObjectContext * managedObjectContext;
+
+@property (nonatomic, strong) id<RedTimeDelegate> redTimeDelegate;
+@property (strong, nonatomic)RedTimes * redTime;
+//-(void)passDataBackward;
 @end
