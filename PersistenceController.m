@@ -36,9 +36,9 @@
     
     NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"DelTacoModel" withExtension:@"momd"];
     NSManagedObjectModel *mom = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
-    ZAssert(mom, @"%@:%@ No model to generate a store from", [self class], NSStringFromSelector(_cmd));
+   // ZAssert(mom, @"%@:%@ No model to generate a store from", [self class], NSStringFromSelector(_cmd));
     NSPersistentStoreCoordinator *coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:mom];
-    ZAssert(coordinator, @"Failed to initialize coordinator");
+   // ZAssert(coordinator, @"Failed to initialize coordinator");
     
     [self setManagedObjectContext:[[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType]];
     
@@ -58,7 +58,7 @@
         NSURL *storeURL = [documentsURL URLByAppendingPathComponent:@"DelTacoModel.sqlite"];
         
         NSError *error = nil;
-        ZAssert([psc addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:&error], @"Error initializing PSC: %@\n%@", [error localizedDescription], [error userInfo]);
+     //   ZAssert([psc addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:&error], @"Error initializing PSC: %@\n%@", [error localizedDescription], [error userInfo]);
         if (![self initCallback]) return;
         
         dispatch_sync(dispatch_get_main_queue(), ^{
@@ -73,11 +73,11 @@
     [[self managedObjectContext] performBlockAndWait:^{
         NSError *error = nil;
         
-        ZAssert([[self managedObjectContext] save:&error], @"Failed to save main context: %@\n%@", [error localizedDescription], [error userInfo]);
+   //     ZAssert([[self managedObjectContext] save:&error], @"Failed to save main context: %@\n%@", [error localizedDescription], [error userInfo]);
         
         [[self privateContext] performBlock:^{
             NSError *privateError = nil;
-            ZAssert([[self privateContext] save:&privateError], @"Error saving private context: %@\n%@", [privateError localizedDescription], [privateError userInfo]);
+       //     ZAssert([[self privateContext] save:&privateError], @"Error saving private context: %@\n%@", [privateError localizedDescription], [privateError userInfo]);
         }];
     }];
 }

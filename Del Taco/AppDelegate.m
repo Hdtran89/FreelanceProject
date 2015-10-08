@@ -26,9 +26,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [Fabric with:@[[Crashlytics class]]];
-    [self setPersistenceController:[[PersistenceController alloc] initWithCallback:^{
-        [self completeUserInterface];
-    }]];
+//    [self setPersistenceController:[[PersistenceController alloc] initWithCallback:^{
+//        [self completeUserInterface];
+//    }]];
+    [self completeUserInterface];
     return YES;
 }
 
@@ -41,11 +42,11 @@
 //}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
-    [[self persistenceController] save];
+    //[[self persistenceController] save];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    [[self persistenceController] save];
+   // [[self persistenceController] save];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -55,7 +56,7 @@
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-    [[self persistenceController] save];
+   // [[self persistenceController] save];
 }
 -(void)completeUserInterface
 {

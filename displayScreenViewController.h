@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "Utils.h"
+#import "RedTimes.h"
+#import "Speed.h"
+#import "Sales.h"
+#import <QuartzCore/QuartzCore.h>
+#import "redTimeViewController.h"
+#import "StatisticsViewController.h"
 
 @interface displayScreenViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *speedLabel;
@@ -32,5 +38,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *tacoBarEndingSoon3;
 @property (weak, nonatomic) IBOutlet UILabel *tacoBarEndingSoon4;
 @property (weak, nonatomic) IBOutlet UILabel *tacoBarEndingSoon5;
+
+@property(nonatomic, retain) RedTimes *_redtimes;
+@property(nonatomic, retain) Speed *_speed;
+@property(nonatomic, retain) Sales *_sale;
+-(void)dataRedTimeFromController:(RedTimes *) record;
+-(void)speedDataFromController:(Speed *) record;
+-(void)saleDataFromController:(Sales *) record;
 
 @end

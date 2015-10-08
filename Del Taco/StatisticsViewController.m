@@ -1498,7 +1498,7 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
         
         
     }
-
+    [self sendtoDisplay];
 }
 
 
@@ -1548,54 +1548,104 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
 }
 -(void)viewWillDisappear:(BOOL)animated {
     
-    if(isSpeed){
+//    if(isSpeed)
+//    {
 //        NSLog(@"Day: %@", day);
 //        NSLog(@"Goal: %@", dailygoal);
 //        NSLog(@"Actual: %@", dailyactual);
 //        NSLog(lunch ? @"Dinner" : @"Lunch");
 //        NSLog(counter ? @"Drive-Thru" : @"Counter");
-//        
-//        Speed * speed = [NSEntityDescription insertNewObjectForEntityForName:@"Speed" inManagedObjectContext:context];
-//        speed.day = day;
-//        speed.weeklygoal = weeklygoal;
-//        speed.dailygoal = dailygoal;
-//        speed.dailyactual = dailyactual;
-//        speed.weeklyactual = weeklyactual;
-//        if(lunch == 1)
-//            speed.islunch = [NSNumber numberWithBool:YES];
-//        else
-//            speed.islunch = [NSNumber numberWithBool:NO];
-//        
-//        if(counter == 1)
-//            speed.iscounter = [NSNumber numberWithBool:YES];
-//        else
-//            speed.iscounter = [NSNumber numberWithBool:NO];
-//        
-//        NSError * error = nil;
-//        if([context save: &error]) {
-//            NSLog(@ "New record has been save:");
-//        } else {
-//            NSLog(@"New record was not save!: %@",[error userInfo]);
-//        }
-//        [Utils createSpeedRecord:day
-//                   setweeklyGoal:weeklygoal
-//                 setWeeklyActual:weeklyactual
-//                    setDailyGoal:dailygoal
-//                  setDailyActual:dailyactual
-//                        setLunch:lunch
-//                      setCounter:counter];
-//    } else if (isService) {
-//        
-//    } else if(isSales) {
-//        [Utils createSpeedRecord:day
-//                   setweeklyGoal:weeklygoal
-//                 setWeeklyActual:weeklyactual
-//                    setDailyGoal:dailygoal
-//                  setDailyActual:dailyactual
-//                        setLunch:lunch
-//                      setCounter:counter];
+//        [self passSpeedDataForward];
+//    }
+//    else if (isSales)
+//    {
+//        NSLog(@"Day: %@", day);
+//        NSLog(@"Goal: %@", dailygoal);
+//        NSLog(@"Actual: %@", dailyactual);
+//        NSLog(lunch ? @"Dinner" : @"Lunch");
+//        NSLog(counter ? @"Drive-Thru" : @"Counter");
+//        [self passSaleDataForward ];
+//    }
+
+}
+@synthesize speed;
+@synthesize sale;
+-(void)sendtoDisplay
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
+                                                    message:[NSString stringWithFormat:@"Send to Display"]
+                                                   delegate:nil
+                                          cancelButtonTitle:@"Send"
+                                          otherButtonTitles:nil, nil];
+    [alert setTag:2];
+    [alert show];
+}
+-(void )alertView:(UIAlertView *) alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if([alertView tag] == 2)
+    {
+        if(buttonIndex == 0)
+        {
+            [self passDataForward];
+        }
+    }
+}
+-(void)passDataForward
+{
+    displayScreenViewController * display = [[displayScreenViewController alloc ]init];
+    
+    if (isSpeed)
+    {
+        speed.day = day;
+        speed.dailyactual = dailyactual;
+        speed.weeklyactual = weeklyactual;
+        speed.dailygoal = dailygoal;
+        speed.weeklygoal = weeklygoal;
+        
+        if (lunch == 1) {
+            speed.islunch = [NSNumber numberWithBool:YES];
+        } else
+        {
+            speed.islunch = [NSNumber numberWithBool:NO];
+        }
+        if (counter == 1) {
+            speed.iscounter = [NSNumber numberWithBool:YES];
+        }
+        else
+        {
+            speed.iscounter = [NSNumber numberWithBool:NO];
+        }
+        
+        display._speed = speed;
+    }
+    else if (isSales)
+    {
+        sale.day = day;
+        sale.dailyactualsale = dailyactualsale;
+        sale.weeklyactualsale = weeklyactualsale;
+        sale.dailylastyearsale = dailylastyearsale;
+        sale.weeklylastyearsale = weeklylastyearsale;
     }
 
 }
+-(void)passSaleDataForward
+{
+    displayScreenViewController * display = [[displayScreenViewController alloc ]init];
+    [self.navigationController pushViewController:display animated:YES];
+}
 
+-(void)passSpeedData
+{
+    if([_statisticDelegate respondsToSelector:@selector(speedDataFromController)])
+    {
+        [_statisticDelegate speedDataFromController:self.speed];
+    }
+}
+-(void)passSaleData
+{
+    if([_statisticDelegate respondsToSelector:@selector(speedDataFromController)])
+    {
+        [_statisticDelegate saleDataFromController:self.sale];
+    }
+}
 @end

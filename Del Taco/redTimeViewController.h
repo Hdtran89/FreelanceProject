@@ -10,9 +10,13 @@
 #import "Utils.h" 
 #import <MessageUI/MessageUI.h>
 #import "RedTimes.h"
-
-@protocol sendDataProtocol <NSObject>
--(void) sendDataToDisplayScreen:(NSMutableDictionary *) redData;
+#import "displayScreenViewController.h"
+//@protocol sendDataProtocol <NSObject>
+//-(void) sendDataToDisplayScreen:(NSMutableDictionary *) redData;
+//@end
+@protocol RedTimeDelegate;
+@protocol RedTimeDelegate <NSObject>
+-(void)dataRedTimeFromController:(RedTimes *) record;
 @end
 
 @interface redTimeViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIGestureRecognizerDelegate, UIApplicationDelegate, MFMailComposeViewControllerDelegate>
@@ -32,7 +36,6 @@
 
 - (IBAction)refreshAction:(id)sender;
 
-@property(nonatomic,assign)id delegate;
-
-
+@property (nonatomic, weak) id<RedTimeDelegate> redTimeDelegate;
+-(void)passDataBackward;
 @end

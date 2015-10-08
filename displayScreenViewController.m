@@ -5,10 +5,15 @@
 //  Created by iOSDev on 9/25/15.
 //  Copyright (c) 2015 United Tax. All rights reserved.
 //
+@protocol RedTimeDelegate;
+@class redTimeViewController;
+
+@class StatisticsViewController;
+@protocol StatisticDelegate;
 
 #import "displayScreenViewController.h"
-#import <QuartzCore/QuartzCore.h>
-@interface displayScreenViewController(){
+
+@interface displayScreenViewController()<RedTimeDelegate , StatisticDelegate>{
     UILabel * speed;
     UILabel * redTimes;
     UILabel * tacoBar;
@@ -48,7 +53,10 @@
 
 @end
 
-@implementation displayScreenViewController : UIViewController
+@implementation displayScreenViewController
+@synthesize _speed;
+@synthesize _sale;
+@synthesize _redtimes;
 
 -(void)viewDidLoad {
 //    WidthScreen = [Utils getScreenWidth];
@@ -67,6 +75,7 @@
     self.lunchLabel.hidden = YES;
     self.dayLabel.hidden = YES;
     self.dinnerLabel.hidden = YES;
+    self.graveyardLabel.hidden = YES;
     self.lastYearSaleLabel.hidden = YES;
     self.prepTimeEndingSoon1.hidden = YES;
     self.prepTimeEndingSoon2.hidden = YES;
@@ -79,38 +88,54 @@
     self.tacoBarEndingSoon4.hidden = YES;
     self.tacoBarEndingSoon5.hidden = YES;
     
+    NSLog(@"speed goal : %@",_speed.dailygoal );
+    
+    [self loadSpeedColumn];
+  //  [self loadRedTimeColumn];
 }
 
 -(void) loadConstraintArray {
-    NSNumber *y1 = [NSNumber numberWithFloat: yOffSetR1];
-    NSNumber *y2 = [NSNumber numberWithFloat: yOffSetR2];
-    
-    yOffSets = [[NSMutableArray alloc] initWithObjects:y1,y2, nil];
-    
-    NSNumber *x1 = [NSNumber numberWithFloat:xOffSetC1];
-    NSNumber *x2 = [NSNumber numberWithFloat:xOffSetC2];
-    NSNumber *x3 = [NSNumber numberWithFloat:xOffSetC3];
-    
-    xOffSets = [[NSMutableArray alloc]initWithObjects:x1,x2,x3, nil];
+//    NSNumber *y1 = [NSNumber numberWithFloat: yOffSetR1];
+//    NSNumber *y2 = [NSNumber numberWithFloat: yOffSetR2];
+//    
+//    yOffSets = [[NSMutableArray alloc] initWithObjects:y1,y2, nil];
+//    
+//    NSNumber *x1 = [NSNumber numberWithFloat:xOffSetC1];
+//    NSNumber *x2 = [NSNumber numberWithFloat:xOffSetC2];
+//    NSNumber *x3 = [NSNumber numberWithFloat:xOffSetC3];
+//    
+//    xOffSets = [[NSMutableArray alloc]initWithObjects:x1,x2,x3, nil];
 }
 
 -(void)loadSpeedColumn {
     self.speedLabel.text = @"Speed";
-    [self.speedLabel setFont:[UIFont systemFontOfSize:30]];
-    self.goalLabel.text = @"Goal";
-    [self.goalLabel setFont:[UIFont systemFontOfSize:24]];
+    self.goalLabel.text = (NSString*)_speed.dailygoal;
+    
+  //  [self.speedLabel setFont:[UIFont systemFontOfSize:30]];
+    self.speedLabel.adjustsFontSizeToFitWidth = YES;
+    if(_speed.dailygoal != NULL)
+    {
+        self.goalLabel.text = [@"Daily Goal: " stringByAppendingString:(NSString*)_speed.dailygoal];
+        self.goalLabel.adjustsFontSizeToFitWidth = YES;
+    }
+   // [self.goalLabel setFont:[UIFont systemFontOfSize:24]];
+    
     //TODO Set the Goal from the item input;
     self.serviceLabel.text = @"Service";
-    [self.serviceLabel setFont:[UIFont systemFontOfSize:24]];
+  //  [self.serviceLabel setFont:[UIFont systemFontOfSize:24]];
+    self.serviceLabel.adjustsFontSizeToFitWidth = YES;
+    
     //TODO Set Service for Day dinner graveyard
     self.saleLabel.text = @"Sale";
-    [self.saleLabel setFont:[UIFont systemFontOfSize:24]];
+  //  [self.saleLabel setFont:[UIFont systemFontOfSize:24]];
+    self.saleLabel.adjustsFontSizeToFitWidth = YES;
+    
     //TODO Set Sale from last year
 }
 
 -(void)loadRedTimeColumn {
     self.prepTimeLabel.text = @"Prep Times";
-    [self.prepTimeLabel setFont:[UIFont systemFontOfSize:30]];
+   // [self.prepTimeLabel setFont:[UIFont systemFontOfSize:30]];
     //TODO Set top 5 Preptime that is about to end;
 }
 
@@ -119,9 +144,18 @@
 }
 
 -(void)loadTacoBarColumn {
-    self.tacoBarLabel.text =@"Taco Bar";
-    [self.tacoBarLabel setFont:[UIFont systemFontOfSize:30]];
+    self.tacoBarLabel.text = @"Taco Bar";
+  //  [self.tacoBarLabel setFont:[UIFont systemFontOfSize:30]];
     //TODO Set the top 5 Taco Time about to end;
 }
 
+-(void)dataRedTimeFromController:(RedTimes *) record{
+    self.prepTimeEndingSoon1.text = [@"Time Ending: " stringByAppendingString:(NSString *)record.date];
+}
+-(void)speedDataFromController:(Speed *) record {
+    self.goalLabel.text = [@"Daily Goal: " stringByAppendingString:(NSString*)record.dailygoal];
+}
+-(void)saleDataFromController:(Sales *) record {
+    self.lastYearSaleLabel.text = [@"Last Year Daily Sale: " stringByAppendingString:(NSString*)record.dailylastyearsale];
+}
 @end

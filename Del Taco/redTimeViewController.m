@@ -1220,8 +1220,12 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
     
     //Save to the Core Data
     datetime = newDate;
-
-    [self showAlertForRedTimeInput:output];
+    if(datetime != NULL){
+        [self sendtoDisplay];
+        [self showAlertForRedTimeInput:output];
+    }
+    
+    
     
     NSLog(@"new date: %@", output);
     
@@ -1242,6 +1246,8 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
             }
         }
     }
+    
+    //TODO: OPEN UIALERTVIEW
     
 }
 
@@ -1365,12 +1371,49 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
     [self dismissViewControllerAnimated:YES completion:NULL];
     
 }
-@synthesize delegate;
+
 -(void)viewWillDisappear:(BOOL)animated {
  //   [delegate sendDataToDisplayScreen:]
 //    [Utils createRedTimeRecord:itemname
 //                  setDateTime:datetime
 //                   checkOther:otherOption];
     
+//    if(_record != NULL)
+//    {
+//        [self passDataForward];
+//    }
+    
 }
+-(void)sendtoDisplay
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
+                                                    message:[NSString stringWithFormat:@"Send to Display"]
+                                                   delegate:nil
+                                          cancelButtonTitle:@"Send"
+                                          otherButtonTitles:nil, nil];
+    [alert setTag:2];
+    [alert show];
+}
+-(void )alertView:(UIAlertView *) alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if([alertView tag] == 2)
+    {
+        if(buttonIndex == 0)
+        {
+            [self passDataBackward];
+        }
+    }
+}
+-(void)passDataBackward
+{
+    if([_redTimeDelegate respondsToSelector:@selector(dataFromRedTimeController:)])
+    {
+        [_redTimeDelegate dataRedTimeFromController:_record];
+    }
+   // displayScreenViewController * display = [[displayScreenViewController alloc ]init];
+    
+
+  //  [self.navigationController pushViewController:display animated:YES];
+}
+
 @end
