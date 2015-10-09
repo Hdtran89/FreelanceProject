@@ -87,7 +87,8 @@
     self.tacoBarEndingSoon5.hidden = YES;
     
     [self loadTitle];
-}
+    
+  }
 
 -(void)loadTitle
 {
@@ -108,15 +109,15 @@
 }
 -(void)loadSpeedColumn:(Speed *) record;
 {
-    self.goalLabel.text = record.dailygoal;
-    if(record.dailygoal >= record.dailyactual)
-    {
-        self.winLoseLabel.text = @"WIN";
-    }
-    else
-    {
-        self.winLoseLabel.text = @"LOSE";
-    }
+//    self.goalLabel.text = record.dailygoal;
+//    if(record.dailygoal >= record.dailyactual)
+//    {
+//        self.winLoseLabel.text = @"WIN";
+//    }
+//    else
+//    {
+//        self.winLoseLabel.text = @"LOSE";
+//    }
     
 }
 -(void)loadServiceColumn:(RedTimes *)record;
@@ -137,11 +138,7 @@
 }
 -(void)viewWillAppear:(BOOL)animated
 {
-    if([self speedDataFromController] != nil)
-    {
-        [self loadSpeedColumn: [self speedDataFromController]];
-    }
-    
+  //  [self loadSpeedColumn: [self speedDataFromController]];
 }
 -(RedTimes *)dataRedTimeFromController
 {

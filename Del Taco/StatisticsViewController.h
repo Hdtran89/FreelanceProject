@@ -27,11 +27,7 @@
 @property (strong, nonatomic) UIWindow *window;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *reportButton;
 - (IBAction)refreshAction:(id)sender;
-@property (nonatomic, strong) NSManagedObjectContext * managedObjectContext;
-
-
 
 @property(nonatomic, strong) id<StatisticDelegate> statisticDelegate;
-//-(void)passSpeedData;
-//-(void)passSaleData;
+
 @end

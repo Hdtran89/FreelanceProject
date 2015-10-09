@@ -11,9 +11,6 @@
 #import <MessageUI/MessageUI.h>
 #import "RedTimes.h"
 #import "displayScreenViewController.h"
-//@protocol sendDataProtocol <NSObject>
-//-(void) sendDataToDisplayScreen:(NSMutableDictionary *) redData;
-//@end
 @class RedTimes;
 @protocol RedTimeDelegate <NSObject>
 -(RedTimes *) dataRedTimeFromController;
@@ -30,8 +27,6 @@
 
 - (IBAction)sendReport:(id)sender;
 - (IBAction)refreshAction:(id)sender;
-
-@property (strong, nonatomic)NSManagedObjectContext * managedObjectContext;
 
 @property (nonatomic, strong) id<RedTimeDelegate> redTimeDelegate;
 

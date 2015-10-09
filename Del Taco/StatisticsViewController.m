@@ -124,7 +124,6 @@
 @end
 
 @implementation StatisticsViewController
-@synthesize managedObjectContext;
 
 - (void)viewDidLoad {
     [super viewDidLoad];

@@ -15,7 +15,6 @@
 
 @interface AppDelegate ()
 
-@property(strong, readwrite) PersistenceController * persistenceController;
 -(void)completeUserInterface;
 
 @end
@@ -42,11 +41,11 @@
 //}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
-    //[[self persistenceController] save];
+
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-   // [[self persistenceController] save];
+    [[self cdh] saveContext];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -56,7 +55,7 @@
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-   // [[self persistenceController] save];
+    [[self cdh] saveContext];
 }
 -(void)completeUserInterface
 {
@@ -121,15 +120,15 @@
     //    tabBarItem1 = [tabBarItem1 initWithTitle:@"Cleaning" image:[UIImage imageNamed:@"cleaningTab"] selectedImage:[UIImage imageNamed:@"cleaningTab"]];
     //
     
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"isLoggedIn"]) {
-        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"IsLoggedIn"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        self.window = [[UIWindow alloc] initWithFrame: [UIScreen mainScreen].bounds];
-        UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        LoginViewController *login = [sb instantiateViewControllerWithIdentifier:NSStringFromClass([ LoginViewController class])];
-        self.window.rootViewController = login;
-        [self.window makeKeyAndVisible];
-    }
+//    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"isLoggedIn"]) {
+//        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"IsLoggedIn"];
+//        [[NSUserDefaults standardUserDefaults] synchronize];
+//        self.window = [[UIWindow alloc] initWithFrame: [UIScreen mainScreen].bounds];
+//        UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//        LoginViewController *login = [sb instantiateViewControllerWithIdentifier:NSStringFromClass([ LoginViewController class])];
+//        self.window.rootViewController = login;
+//        [self.window makeKeyAndVisible];
+//    }
     
     //        self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
     //        UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -138,5 +137,17 @@
     //                    [storyboard instantiateViewControllerWithIdentifier:@"displayScreen"];
     //        self.window.rootViewController = rootViewController;
     //        [self.window makeKeyAndVisible];
+}
+#define debug 1
+
+- (CoreDataHelper*)cdh {
+    if (debug==1) {
+        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
+    }
+    if (!_coreDataHelper) {
+        _coreDataHelper = [CoreDataHelper new];
+        [_coreDataHelper setupCoreData];
+    }
+    return _coreDataHelper;
 }
 @end
