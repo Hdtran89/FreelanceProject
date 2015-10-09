@@ -51,7 +51,6 @@
     NSMutableArray * tacoBarColumn;
     //UIView * customView;
 }
-
 @end
 
 @implementation displayScreenViewController
@@ -69,7 +68,7 @@
 //
     UITabBarItem * tabBarItem = [[UITabBarItem alloc]initWithTitle:@"" image:[UIImage imageNamed:@"displayTab"] tag:1];
     self.tabBarItem = tabBarItem;
-    
+    self.goalLabel.hidden = YES;
     self.winLoseLabel.hidden = YES;
     self.lunchLabel.hidden = YES;
     self.dayLabel.hidden = YES;
@@ -87,99 +86,76 @@
     self.tacoBarEndingSoon4.hidden = YES;
     self.tacoBarEndingSoon5.hidden = YES;
     
-    [self loadSpeedColumn];
-  //  [self loadRedTimeColumn];
+    [self loadTitle];
 }
 
--(void) loadConstraintArray {
-//    NSNumber *y1 = [NSNumber numberWithFloat: yOffSetR1];
-//    NSNumber *y2 = [NSNumber numberWithFloat: yOffSetR2];
-//    
-//    yOffSets = [[NSMutableArray alloc] initWithObjects:y1,y2, nil];
-//    
-//    NSNumber *x1 = [NSNumber numberWithFloat:xOffSetC1];
-//    NSNumber *x2 = [NSNumber numberWithFloat:xOffSetC2];
-//    NSNumber *x3 = [NSNumber numberWithFloat:xOffSetC3];
-//    
-//    xOffSets = [[NSMutableArray alloc]initWithObjects:x1,x2,x3, nil];
-}
-
--(void)loadSpeedColumn {
+-(void)loadTitle
+{
     self.speedLabel.text = @"Speed";
-    self.goalLabel.text = (NSString*)_speed.dailygoal;
-    
-  //  [self.speedLabel setFont:[UIFont systemFontOfSize:30]];
     self.speedLabel.adjustsFontSizeToFitWidth = YES;
-//    if(_speed.dailygoal != NULL)
-//    {
-//        self.goalLabel.text = [@"Daily Goal: " stringByAppendingString:(NSString*)_speed.dailygoal];
-//        self.goalLabel.adjustsFontSizeToFitWidth = YES;
-//    }
-   // [self.goalLabel setFont:[UIFont systemFontOfSize:24]];
-    
-    //TODO Set the Goal from the item input;
     self.serviceLabel.text = @"Service";
-  //  [self.serviceLabel setFont:[UIFont systemFontOfSize:24]];
     self.serviceLabel.adjustsFontSizeToFitWidth = YES;
-    
-    //TODO Set Service for Day dinner graveyard
     self.saleLabel.text = @"Sale";
-  //  [self.saleLabel setFont:[UIFont systemFontOfSize:24]];
     self.saleLabel.adjustsFontSizeToFitWidth = YES;
-    
-    //TODO Set Sale from last year
-}
-
--(void)loadRedTimeColumn {
     self.prepTimeLabel.text = @"Prep Times";
-   // [self.prepTimeLabel setFont:[UIFont systemFontOfSize:30]];
-    //TODO Set top 5 Preptime that is about to end;
+    self.prepTimeLabel.adjustsFontSizeToFitWidth = YES;
+    self.tacoBarLabel.text = @"Taco Bar";
+    self.tacoBarLabel.adjustsFontSizeToFitWidth = YES;
 }
-
--(void)CalculateEndingTime {
+-(void)calculateEndingTime
+{
     
 }
-
--(void)loadTacoBarColumn {
-    self.tacoBarLabel.text = @"Taco Bar";
-  //  [self.tacoBarLabel setFont:[UIFont systemFontOfSize:30]];
-    //TODO Set the top 5 Taco Time about to end;
+-(void)loadSpeedColumn:(Speed *) record;
+{
+    self.goalLabel.text = record.dailygoal;
+    if(record.dailygoal >= record.dailyactual)
+    {
+        self.winLoseLabel.text = @"WIN";
+    }
+    else
+    {
+        self.winLoseLabel.text = @"LOSE";
+    }
+    
+}
+-(void)loadServiceColumn:(RedTimes *)record;
+{
+    
+}
+-(void)loadSaleColumn:(Sales *)record;
+{
+    
+}
+-(void)loadTacoBarColumn
+{
+    
+}
+-(void)loadPrepTimeColumn
+{
+    
 }
 -(void)viewWillAppear:(BOOL)animated
 {
-//    if(_redtimes != NULL && _speed != NULL && _sale != NULL)
-//    {
-//        [self dataRedTimeFromController: _redtimes];
-//        [self speedDataFromController:_speed];
-//        [self saleDataFromController:_sale];
-//    }
-//    else{
-//        NSLog(@"All object are NULL");
-//    }
+    if([self speedDataFromController] != nil)
+    {
+        [self loadSpeedColumn: [self speedDataFromController]];
+    }
+    
 }
 -(RedTimes *)dataRedTimeFromController
 {
-   // redTimeViewController * red = [[redTimeViewController alloc]init];
-  //  red.redTimeDelegate = self;
     NSLog(@"method call redtime");
-    return self.redTime;
-   // self.prepTimeEndingSoon1.text = [@"Time Ending: " stringByAppendingString:(NSString *)record.date];
+    return self.dataRedTimeFromController;
 }
 -(Speed *)speedDataFromController
 {
-   // StatisticsViewController * stat = [[StatisticsViewController alloc]init];
-  //  stat.statisticDelegate = self;
-    NSLog(@"method call speeed");
-    
-    return self.speed;
-    //self.goalLabel.text = [@"Daily Goal: " stringByAppendingString:(NSString*)record.dailygoal];
+    NSLog(@"method call speed");
+    return self.speedDataFromController;
 }
 -(Sales *)saleDataFromController
 {
-   // StatisticsViewController * stat = [[StatisticsViewController alloc]init];
-   // stat.statisticDelegate = self;
     NSLog(@"method call sale");
-    return self.sale;
-    //self.lastYearSaleLabel.text = [@"Last Year Daily Sale: " stringByAppendingString:(NSString*)record.dailylastyearsale];
+    return self.saleDataFromController;
 }
 @end

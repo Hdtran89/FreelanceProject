@@ -42,5 +42,4 @@
 -(RedTimes *)dataRedTimeFromController;
 -(Speed *)speedDataFromController;
 -(Sales *)saleDataFromController;
-
 @end

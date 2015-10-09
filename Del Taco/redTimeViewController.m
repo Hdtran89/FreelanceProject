@@ -78,8 +78,7 @@
     Boolean otherOption;
     
 }
-
-
+@property (strong, nonatomic)RedTimes * redTime;
 @end
 
 
@@ -1371,19 +1370,6 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
     [self dismissViewControllerAnimated:YES completion:NULL];
     
 }
-
--(void)viewWillDisappear:(BOOL)animated {
- //   [delegate sendDataToDisplayScreen:]
-//    [Utils createRedTimeRecord:itemname
-//                  setDateTime:datetime
-//                   checkOther:otherOption];
-    
-//    if(_record != NULL)
-//    {
-//        [self passDataForward];
-//    }
-    
-}
 -(void)sendtoDisplay
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
@@ -1406,15 +1392,10 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
 }
 -(void)passDataBackward
 {
-     #pragma clang diagnostic ignored "-Wundeclared-selector"
-    if([_redTimeDelegate respondsToSelector:@selector(dataFromRedTimeController:)])
-    {
-        [_redTimeDelegate dataRedTimeFromController:_redTime];
-    }
-   // NSString * storyboardName = @"Main";
-   // UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
-  //  UIViewController * display = [storyboard instantiateViewControllerWithIdentifier:@"displayScreen"];
-  //  [self presentViewController:display animated:YES completion:nil];
+    NSLog(@"date :%@", datetime );
+    NSLog(@"item name: %@" , itemname);
+    self.redTime.itemName = itemname;
+    self.redTime.date = datetime;
 }
 
 @end

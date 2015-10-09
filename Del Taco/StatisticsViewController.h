@@ -16,7 +16,6 @@
 @class Speed, Sales;
 
 @protocol StatisticDelegate <NSObject>
-@required
 -(Speed *)speedDataFromController;
 -(Sales *)saleDataFromController;
 @end
@@ -30,8 +29,7 @@
 - (IBAction)refreshAction:(id)sender;
 @property (nonatomic, strong) NSManagedObjectContext * managedObjectContext;
 
-@property(nonatomic, retain)Speed * speed;
-@property(nonatomic, retain)Sales * sale;
+
 
 @property(nonatomic, strong) id<StatisticDelegate> statisticDelegate;
 //-(void)passSpeedData;

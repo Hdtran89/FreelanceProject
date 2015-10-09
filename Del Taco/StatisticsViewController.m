@@ -119,7 +119,8 @@
     bool counter;
     
 }
-
+@property(nonatomic, retain)Speed * speed;
+@property(nonatomic, retain)Sales * sale;
 @end
 
 @implementation StatisticsViewController
@@ -1593,8 +1594,9 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
                 self.speed.weeklyactual = weeklyactual;
                 self.speed.dailygoal = dailygoal;
                 self.speed.weeklygoal = weeklygoal;
-                
-                [self passSpeedData];
+                self.speed.iscounter = [NSNumber numberWithBool:counter];
+                self.speed.islunch = [NSNumber numberWithBool:lunch];
+             //   [self passSpeedData];
             }
             else if (isSales){
                 self.sale.dailyactualsale = dailyactualsale;
@@ -1602,7 +1604,7 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
                 self.sale.weeklyactualsale = weeklyactualsale;
                 self.sale.weeklylastyearsale = weeklylastyearsale;
                 self.sale.day = day;
-                [self passSaleData];
+             //   [self passSaleData];
             }
         }
     }
@@ -1653,26 +1655,16 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
 
 -(void)passSpeedData
 {
-    #pragma clang diagnostic ignored "-Wundeclared-selector"
-    if([_statisticDelegate respondsToSelector:@selector(speedDataFromController)])
-    {
-        [_statisticDelegate speedDataFromController];
-    }
-   // NSString * storyboardName = @"MainStoryboard";
-   // UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
-   // UIViewController * display = [storyboard instantiateViewControllerWithIdentifier:@"displayScreen"];
-   // [self presentViewController:display animated:YES completion:nil];
+    self.speed.day = day;
+    self.speed.dailyactual = dailyactual;
+    self.speed.weeklyactual = weeklyactual;
+    self.speed.dailygoal = dailygoal;
+    self.speed.weeklygoal = weeklygoal;
+    self.speed.iscounter = [NSNumber numberWithBool:counter];
+    self.speed.islunch = [NSNumber numberWithBool:lunch];
 }
 -(void)passSaleData
 {
-    #pragma clang diagnostic ignored "-Wundeclared-selector"
-    if([_statisticDelegate respondsToSelector:@selector(speedDataFromController)])
-    {
-        [_statisticDelegate saleDataFromController];
-    }
-   // NSString * storyboardName = @"MainStoryboard";
-  //  UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
-  //  UIViewController * display = [storyboard instantiateViewControllerWithIdentifier:@"displayScreen"];
-  //  [self presentViewController:display animated:YES completion:nil];
+    
 }
 @end

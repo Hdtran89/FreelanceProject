@@ -16,7 +16,6 @@
 //@end
 @class RedTimes;
 @protocol RedTimeDelegate <NSObject>
-@required
 -(RedTimes *) dataRedTimeFromController;
 @end
 
@@ -35,6 +34,6 @@
 @property (strong, nonatomic)NSManagedObjectContext * managedObjectContext;
 
 @property (nonatomic, strong) id<RedTimeDelegate> redTimeDelegate;
-@property (strong, nonatomic)RedTimes * redTime;
+
 //-(void)passDataBackward;
 @end
