@@ -119,8 +119,6 @@
     bool counter;
     
 }
-@property(nonatomic, retain)Speed * speed;
-@property(nonatomic, retain)Sales * sale;
 @end
 
 @implementation StatisticsViewController
@@ -1463,13 +1461,14 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
                 [textField setEnabled:NO];
                 [textField setBackgroundColor:[UIColor grayColor]];
             }
-
+            dailylastyearsale = [NSNumber numberWithFloat:lastYearSales];
         } else {
             actualSales = [[textField text] floatValue];
             if (actualSales <= 0.00) {
                 [self alertForMisFormedText];
                 [textField setText:@""];
             }
+            dailylastyearsale = [NSNumber numberWithFloat:lastYearSales];
         }
         
         
@@ -1545,125 +1544,49 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
         }
         
     }
+    if([alertView tag] == 2)
+    {
+        if(buttonIndex == 0)
+        {
+            if (isSpeed) {
+                [self performSegueWithIdentifier:@"stat.segue.push.alert" sender:self];
+                
+            }
+            else if (isSales){
+            }
+        }
+    }
 }
--(void)viewWillDisappear:(BOOL)animated {
-    
-//    if(isSpeed)
-//    {
-//        NSLog(@"Day: %@", day);
-//        NSLog(@"Goal: %@", dailygoal);
-//        NSLog(@"Actual: %@", dailyactual);
-//        NSLog(lunch ? @"Dinner" : @"Lunch");
-//        NSLog(counter ? @"Drive-Thru" : @"Counter");
-//        [self passSpeedDataForward];
-//    }
-//    else if (isSales)
-//    {
-//        NSLog(@"Day: %@", day);
-//        NSLog(@"Goal: %@", dailygoal);
-//        NSLog(@"Actual: %@", dailyactual);
-//        NSLog(lunch ? @"Dinner" : @"Lunch");
-//        NSLog(counter ? @"Drive-Thru" : @"Counter");
-//        [self passSaleDataForward ];
-//    }
-
-}
-@synthesize speed;
-@synthesize sale;
 -(void)sendtoDisplay
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
                                                     message:[NSString stringWithFormat:@"Send to Display"]
-                                                   delegate:nil
+                                                   delegate:self
                                           cancelButtonTitle:@"Send"
                                           otherButtonTitles:nil, nil];
     [alert setTag:2];
     [alert show];
 }
--(void )alertView:(UIAlertView *) alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
-{
-    if([alertView tag] == 2)
-    {
-        if(buttonIndex == 0)
-        {
-            //[self passDataForward];
-            if (isSpeed) {
-                self.speed.day = day;
-                self.speed.dailyactual = dailyactual;
-                self.speed.weeklyactual = weeklyactual;
-                self.speed.dailygoal = dailygoal;
-                self.speed.weeklygoal = weeklygoal;
-                self.speed.iscounter = [NSNumber numberWithBool:counter];
-                self.speed.islunch = [NSNumber numberWithBool:lunch];
-             //   [self passSpeedData];
-            }
-            else if (isSales){
-                self.sale.dailyactualsale = dailyactualsale;
-                self.sale.dailylastyearsale = dailylastyearsale;
-                self.sale.weeklyactualsale = weeklyactualsale;
-                self.sale.weeklylastyearsale = weeklylastyearsale;
-                self.sale.day = day;
-             //   [self passSaleData];
-            }
-        }
-    }
-}
 -(void)passDataForward
 {
     //displayScreenViewController * display = [[displayScreenViewController alloc ]init];
     
-    if (isSpeed)
-    {
-        speed.day = day;
-        speed.dailyactual = dailyactual;
-        speed.weeklyactual = weeklyactual;
-        speed.dailygoal = dailygoal;
-        speed.weeklygoal = weeklygoal;
-        
-        if (lunch == 1) {
-            speed.islunch = [NSNumber numberWithBool:YES];
-        } else
-        {
-            speed.islunch = [NSNumber numberWithBool:NO];
-        }
-        if (counter == 1) {
-            speed.iscounter = [NSNumber numberWithBool:YES];
-        }
-        else
-        {
-            speed.iscounter = [NSNumber numberWithBool:NO];
-        }
-        
-        //display.speed = speed;
-    }
-    else if (isSales)
-    {
-        sale.day = day;
-        sale.dailyactualsale = dailyactualsale;
-        sale.weeklyactualsale = weeklyactualsale;
-        sale.dailylastyearsale = dailylastyearsale;
-        sale.weeklylastyearsale = weeklylastyearsale;
-    }
+
 
 }
--(void)passSaleDataForward
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    displayScreenViewController * display = [[displayScreenViewController alloc ]init];
-    [self.navigationController pushViewController:display animated:YES];
-}
-
--(void)passSpeedData
-{
-    self.speed.day = day;
-    self.speed.dailyactual = dailyactual;
-    self.speed.weeklyactual = weeklyactual;
-    self.speed.dailygoal = dailygoal;
-    self.speed.weeklygoal = weeklygoal;
-    self.speed.iscounter = [NSNumber numberWithBool:counter];
-    self.speed.islunch = [NSNumber numberWithBool:lunch];
-}
--(void)passSaleData
-{
-    
+    displayScreenViewController * display = [segue destinationViewController];
+    if([[segue identifier] isEqualToString:@"stat.segue.push.alert"])
+    {
+        if (isSpeed)
+        {
+            display.goalText =  [dailygoal stringValue];
+        }
+        else if (isSales)
+        {
+            display.lastYearSaleText = [dailylastyearsale stringValue];
+        }
+    }
 }
 @end

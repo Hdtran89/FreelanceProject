@@ -15,79 +15,26 @@
 #import "displayScreenViewController.h"
 
 @interface displayScreenViewController()<RedTimeDelegate , StatisticDelegate>{
-    UILabel * speed;
-    UILabel * redTimes;
-    UILabel * tacoBar;
-    UILabel * goal;
-    UILabel * service;
-    UILabel * sale;
-    
-    CGFloat xMargin;
-    CGFloat yMargin;
-    CGFloat totalEffectiveWidth;
-    CGFloat totalEffectiveHeight;
-    CGFloat WidthScreen;
-    CGFloat HeightScreen;
-    CGFloat widthOfSpeedColumn;
-    CGFloat widthOfPrepColumn;
-    CGFloat widthOfTacoBarColumn;
-    
-    CGFloat xOffSetC1;
-    CGFloat xOffSetC2;
-    CGFloat xOffSetC3;
-    CGFloat xOffSetC4;
-    
-    CGFloat yOffSetR1;
-    CGFloat yOffSetR2;
-    CGFloat yOffSetR3;
-    CGFloat yOffSetR4;
-    CGRect viewFrame;
-    
-    NSMutableArray * yOffSets;
-    NSMutableArray * xOffSets;
-    
-    NSMutableArray * speedColumm;
-    NSMutableArray * prepTimeColumn;
-    NSMutableArray * tacoBarColumn;
-    //UIView * customView;
 }
 @end
 
 @implementation displayScreenViewController
 
-
+@synthesize goalText = _goalText;
+@synthesize winLoseText = _winLoseText;
+@synthesize lunchText = _lunchText;
+@synthesize dayText = _dayText;
+@synthesize dinnerText =_dinnerText;
+@synthesize graveyardText = _graveyardText;
+@synthesize lastYearSaleText = _lastYearSaleText;
+@synthesize itemName = _itemName;
+@synthesize itemDate = _itemDate;
 -(void)viewDidLoad {
-//    WidthScreen = [Utils getScreenWidth];
-//    HeightScreen = [Utils getScreenHeight];
-//    xMargin = .02 * WidthScreen;
-//    yMargin = .02 * HeightScreen;
-//    totalEffectiveHeight = HeightScreen - yMargin*2;
-//    totalEffectiveWidth = WidthScreen - xMargin*2;
-//    
-//    viewFrame = CGRectMake(xMargin, yMargin, totalEffectiveWidth, totalEffectiveHeight);
-//
+    [super viewDidLoad ];
     UITabBarItem * tabBarItem = [[UITabBarItem alloc]initWithTitle:@"" image:[UIImage imageNamed:@"displayTab"] tag:1];
     self.tabBarItem = tabBarItem;
-    self.goalLabel.hidden = YES;
-    self.winLoseLabel.hidden = YES;
-    self.lunchLabel.hidden = YES;
-    self.dayLabel.hidden = YES;
-    self.dinnerLabel.hidden = YES;
-    self.graveyardLabel.hidden = YES;
-    self.lastYearSaleLabel.hidden = YES;
-    self.prepTimeEndingSoon1.hidden = YES;
-    self.prepTimeEndingSoon2.hidden = YES;
-    self.prepTimeEndingSoon3.hidden = YES;
-    self.prepTimeEndingSoon4.hidden = YES;
-    self.prepTimeEndingSoon5.hidden = YES;
-    self.tacoBarEndingSoon1.hidden = YES;
-    self.tacoBarEndingSoon2.hidden = YES;
-    self.tacoBarEndingSoon3.hidden = YES;
-    self.tacoBarEndingSoon4.hidden = YES;
-    self.tacoBarEndingSoon5.hidden = YES;
     
     [self loadTitle];
-    
   }
 
 -(void)loadTitle
@@ -98,61 +45,137 @@
     self.serviceLabel.adjustsFontSizeToFitWidth = YES;
     self.saleLabel.text = @"Sale";
     self.saleLabel.adjustsFontSizeToFitWidth = YES;
-    self.prepTimeLabel.text = @"Prep Times";
-    self.prepTimeLabel.adjustsFontSizeToFitWidth = YES;
+    self.drinkTimeLabel.text = @"Prep Times";
+    self.drinkTimeLabel.adjustsFontSizeToFitWidth = YES;
     self.tacoBarLabel.text = @"Taco Bar";
     self.tacoBarLabel.adjustsFontSizeToFitWidth = YES;
+    
 }
--(void)calculateEndingTime
+-(void)calculateEndingTime:(NSString *)time
 {
     
 }
--(void)loadSpeedColumn:(Speed *) record;
+-(void)loadSpeedColumn;
 {
-//    self.goalLabel.text = record.dailygoal;
-//    if(record.dailygoal >= record.dailyactual)
-//    {
-//        self.winLoseLabel.text = @"WIN";
-//    }
-//    else
-//    {
-//        self.winLoseLabel.text = @"LOSE";
-//    }
-    
+    NSLog(@"goal text in display: %@", _goalText);
+    if(_goalText == NULL){
+        self.goalLabel.hidden = YES;
+     //   self.winLoseLabel.hidden = YES;
+    }
+    else{
+        self.goalLabel.text = _goalText;
+     //   self.winLoseLabel.text = _winLoseText;
+    }
 }
--(void)loadServiceColumn:(RedTimes *)record;
+-(void)loadServiceColumn
 {
-    
+    if(_lunchText == NULL) {
+        self.lunchLabel.hidden = YES;
+    } else {
+        self.lunchLabel.text = _lunchText;
+    }
+    if(_dayText == NULL) {
+        self.dayLabel.hidden = YES;
+    } else {
+        self.dayLabel.text = _dayText;
+    }
+    if(_dinnerText == NULL) {
+        self.dinnerLabel.hidden = YES;
+    } else {
+        self.dinnerLabel.text = _dinnerText;
+    }
+    if(_graveyardText == NULL) {
+        self.graveyardLabel.hidden = YES;
+    } else {
+        self.graveyardLabel.text = _graveyardText;
+    }
 }
--(void)loadSaleColumn:(Sales *)record;
+-(void)loadSaleColumn
 {
-    
+    if(_lastYearSaleText == NULL){
+        self.lastYearSaleLabel.hidden = YES;
+    } else {
+        self.lastYearSaleLabel.text = _lastYearSaleText;
+    }
 }
--(void)loadTacoBarColumn
+-(void)loadTacoBarColumn:(NSString *) itemName
+                 setDate:(NSString *)date
 {
-    
+    if ([itemName isEqualToString:@"Steak"]) {
+        self.tacoBarEndingSoon1.text = [itemName stringByAppendingString:date];
+        self.tacoBarEndingSoon1.adjustsFontSizeToFitWidth = YES;
+    }
+    else if ([itemName isEqualToString:@"TacoMeat"]){
+        self.tacoBarEndingSoon2.text = [itemName stringByAppendingString:date];
+    }
+    else if ([itemName isEqualToString:@"Chicken"]){
+        self.tacoBarEndingSoon3.text = [itemName stringByAppendingString:date];
+    }
+    else if ([itemName isEqualToString:@"Rice"] ){
+        self.tacoBarEndingSoon4.text = [itemName stringByAppendingString:date];
+    }
+    else if ([itemName isEqualToString:@"Red Sauce"] ){
+        self.tacoBarEndingSoon5.text = [itemName stringByAppendingString:date];
+    }
+    else if ([itemName isEqualToString:@"Green Sauce"] ){
+        self.tacoBarEndingSoon6.text = [itemName stringByAppendingString:date];
+    }
+    else if ([itemName isEqualToString:@"Red Chilli Topping"] ){
+        self.tacoBarEndingSoon7.text = [itemName stringByAppendingString:date];
+    }
+    else if ([itemName isEqualToString:@"Turkey"] ){
+        self.tacoBarEndingSoon8.text = [itemName stringByAppendingString:date];
+    }
+    else if ([itemName isEqualToString:@"Black Beans"] ) {
+        self.tacoBarEndingSoon9.text = [itemName stringByAppendingString:date];
+    }
+    else if ([itemName isEqualToString:@"Pinto Beans"] ) {
+        self.tacoBarEndingSoon10.text = [itemName stringByAppendingString:date];
+    }
+    else if ([itemName isEqualToString:@"Nacho Cheese"]){
+        self.tacoBarEndingSoon11.text = [itemName stringByAppendingString:date];
+    }
+    else if ([itemName isEqualToString:@"Veg Blend"]){
+        self.tacoBarEndingSoon12.text = [itemName stringByAppendingString:date];
+    }
+    else if ([itemName isEqualToString:@"Tomatoes - Sliced"] ){
+        self.tacoBarEndingSoon13.text = [itemName stringByAppendingString:date];
+    }
+    else if ([itemName isEqualToString:@"Tomatoes - Diced"] ){
+        self.tacoBarEndingSoon14.text = [itemName stringByAppendingString:date];
+    }
+    else if ([itemName isEqualToString:@"Pico De Gallo Salsa"] ){
+        self.tacoBarEndingSoon15.text = [itemName stringByAppendingString:date];
+    }
 }
--(void)loadPrepTimeColumn
+-(void)loadDrinkTimeColumn:(NSString *)itemName
+                   setDate:(NSString *)date
+
 {
-    
+    if ([itemName isEqualToString:@"Coffee"]) {
+        self.drinkTimeEndingSoon1.text = [itemName stringByAppendingString:date];
+    }
+    else if ([itemName isEqualToString:@"Lemons"]) {
+        self.drinkTimeEndingSoon2.text = [itemName stringByAppendingString:date];
+    }
+    else if ([itemName isEqualToString:@"Strawberries"]) {
+        self.drinkTimeEndingSoon3.text = [itemName stringByAppendingString:date];
+    }
+    else if ([itemName isEqualToString:@"Iced Tea"]) {
+        self.drinkTimeEndingSoon4.text = [itemName stringByAppendingString:date];
+    }
+    else if ([itemName isEqualToString:@"Sweet Tea"]) {
+        self.drinkTimeEndingSoon5.text = [itemName stringByAppendingString:date];
+    }
 }
 -(void)viewWillAppear:(BOOL)animated
 {
-  //  [self loadSpeedColumn: [self speedDataFromController]];
-}
--(RedTimes *)dataRedTimeFromController
-{
-    NSLog(@"method call redtime");
-    return self.dataRedTimeFromController;
-}
--(Speed *)speedDataFromController
-{
-    NSLog(@"method call speed");
-    return self.speedDataFromController;
-}
--(Sales *)saleDataFromController
-{
-    NSLog(@"method call sale");
-    return self.saleDataFromController;
+    [self loadServiceColumn];
+    [self loadSpeedColumn];
+    [self loadSaleColumn];
+    [self loadTacoBarColumn:_itemName
+                    setDate:_itemDate];
+    [self loadDrinkTimeColumn:_itemName
+                      setDate:_itemDate];
 }
 @end

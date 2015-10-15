@@ -74,7 +74,7 @@
     NSMutableArray *drinkStationFields;
     
     NSString * itemname;
-    NSDate * datetime;
+    NSString * datetime;
     Boolean otherOption;
     
 }
@@ -943,7 +943,6 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
                                                cancelButtonTitle:@"Okay"
                                                otherButtonTitles:nil, nil];
         [alert show];
-
     }
     //set up formatter for short style (this is how the string will be outputted)
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
@@ -1218,13 +1217,12 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
     [self scheduleNotificationForDate:newDate];
     
     //Save to the Core Data
-    datetime = newDate;
+    datetime = output;
     if(datetime != NULL){
         [self sendtoDisplay];
-        [self showAlertForRedTimeInput:output];
     }
     
-    
+    [self showAlertForRedTimeInput:output];
     
     NSLog(@"new date: %@", output);
     
@@ -1370,32 +1368,43 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
     [self dismissViewControllerAnimated:YES completion:NULL];
     
 }
+
 -(void)sendtoDisplay
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
+    UIAlertView *alertdisplay = [[UIAlertView alloc] initWithTitle:@""
                                                     message:[NSString stringWithFormat:@"Send to Display"]
-                                                   delegate:nil
+                                                   delegate:self
                                           cancelButtonTitle:@"Send"
                                           otherButtonTitles:nil, nil];
-    [alert setTag:2];
-    [alert show];
+    [alertdisplay setTag:2];
+    [alertdisplay show];
 }
--(void )alertView:(UIAlertView *) alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
-{
-    if([alertView tag] == 2)
+
+-(void )alertView:(UIAlertView *) alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{   if([alertView tag] == 2)
     {
         if(buttonIndex == 0)
         {
-            [self passDataBackward];
+            [self performSegueWithIdentifier:@"red.segue.push.alert" sender:self];
         }
     }
 }
--(void)passDataBackward
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    NSLog(@"date :%@", datetime );
-    NSLog(@"item name: %@" , itemname);
-    self.redTime.itemName = itemname;
-    self.redTime.date = datetime;
+    displayScreenViewController * display = [segue destinationViewController];
+    if([[segue identifier] isEqualToString:@"red.segue.push.alert"])
+    {
+        if(isTacoBar)
+        {
+            display.itemName = itemname;
+            display.itemDate = datetime;
+        }
+        else if(isDrinkStation)
+        {
+            display.itemName = itemname;
+            display.itemDate = datetime;
+        }
+       
+    }
 }
-
 @end

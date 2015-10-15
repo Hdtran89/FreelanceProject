@@ -9,14 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "Utils.h" 
 #import <MessageUI/MessageUI.h>
-#import "RedTimes.h"
 #import "displayScreenViewController.h"
 @class RedTimes;
 @protocol RedTimeDelegate <NSObject>
 -(RedTimes *) dataRedTimeFromController;
 @end
 
-@interface redTimeViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIGestureRecognizerDelegate, UIApplicationDelegate, MFMailComposeViewControllerDelegate>
+@interface redTimeViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIGestureRecognizerDelegate, UIApplicationDelegate, MFMailComposeViewControllerDelegate,UIAlertViewDelegate, UIActionSheetDelegate>
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 - (IBAction)segmentSwitch:(id)sender;
 @property (weak, nonatomic) IBOutlet UITableView *table;

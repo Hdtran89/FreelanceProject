@@ -9,10 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "Utils.h"
 #import <MessageUI/MessageUI.h>
-#import "Speed.h"
 #import "AppDelegate.h"
 #import "displayScreenViewController.h"
-#import "Sales.h"
 @class Speed, Sales;
 
 @protocol StatisticDelegate <NSObject>
@@ -20,7 +18,7 @@
 -(Sales *)saleDataFromController;
 @end
 
-@interface StatisticsViewController : UIViewController <UIGestureRecognizerDelegate, UITextFieldDelegate, MFMailComposeViewControllerDelegate, UIAlertViewDelegate>
+@interface StatisticsViewController : UIViewController <UIGestureRecognizerDelegate, UITextFieldDelegate, MFMailComposeViewControllerDelegate, UIAlertViewDelegate,UIActionSheetDelegate>
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 - (IBAction)segmentSwitch:(id)sender;
 - (IBAction)sendReport:(id)sender;
