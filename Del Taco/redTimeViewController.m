@@ -1439,10 +1439,12 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
         }
     }
 }
--(NSUserDefaults *)saveTacoBar:(NSString *)name setDate:(NSString *)date
+-(NSUserDefaults *)saveTacoBar:(NSString *)name
+                       setDate:(NSString *)date
 {
     NSUserDefaults * item = [NSUserDefaults standardUserDefaults];
-    [item setObject:date forKey:name];
+    [item setObject:name forKey:@"name"];
+    [item setObject:date forKey:@"date"];
     [item synchronize];
     return item;
 }

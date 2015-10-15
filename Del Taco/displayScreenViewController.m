@@ -14,18 +14,20 @@
 
 #import "displayScreenViewController.h"
 @interface displayScreenViewController()<RedTimeDelegate , StatisticDelegate>{
+    NSString * itemname;
+    NSString * dateitem;
 }
 @end
 
 @implementation displayScreenViewController
 
-@synthesize goalText = _goalText;
-@synthesize winLoseText = _winLoseText;
-@synthesize lunchText = _lunchText;
-@synthesize dayText = _dayText;
-@synthesize dinnerText =_dinnerText;
-@synthesize graveyardText = _graveyardText;
-@synthesize lastYearSaleText = _lastYearSaleText;
+//@synthesize goalText = _goalText;
+//@synthesize winLoseText = _winLoseText;
+//@synthesize lunchText = _lunchText;
+//@synthesize dayText = _dayText;
+//@synthesize dinnerText =_dinnerText;
+//@synthesize graveyardText = _graveyardText;
+//@synthesize lastYearSaleText = _lastYearSaleText;
 @synthesize redTimeItems = _redTimeItems;
 @synthesize redTime = _redTime;
 
@@ -68,47 +70,64 @@
 {
     
 }
--(void)loadSpeedColumn;
+-(void)loadSpeedColumn:(NSUserDefaults *)speedItem
 {
-    NSLog(@"goal text in display: %@", _goalText);
-    if(_goalText == NULL){
+    NSString * goal = [speedItem objectForKey:@"goalspeed"];
+    NSString * winlose = [speedItem objectForKey:@"win"];
+    if(goal == NULL){
         self.goalLabel.hidden = YES;
         self.winLoseLabel.hidden = YES;
     }
     else{
-        self.goalLabel.text = _goalText;
-        self.winLoseLabel.text = _winLoseText;
+        self.goalLabel.hidden = NO;
+        self.goalLabel.font = [UIFont systemFontOfSize:18];
+        self.goalLabel.text = goal;
+        self.goalLabel.adjustsFontSizeToFitWidth = YES;
+        
+        self.winLoseLabel.hidden = NO;
+        self.winLoseLabel.font = [UIFont systemFontOfSize:18];
+        self.winLoseLabel.text = winlose;
+        self.winLoseLabel.adjustsFontSizeToFitWidth = YES;
     }
 }
--(void)loadServiceColumn
+//-(void)loadServiceColumn:(NSUserDefaults *)serviceItem
+//{
+//    if(_lunchText == NULL) {
+//        self.lunchLabel.hidden = YES;
+//    } else {
+//        self.lunchLabel.text = _lunchText;
+//    }
+//    if(_dayText == NULL) {
+//        self.dayLabel.hidden = YES;
+//    } else {
+//        self.dayLabel.text = _dayText;
+//    }
+//    if(_dinnerText == NULL) {
+//        self.dinnerLabel.hidden = YES;
+//    } else {
+//        self.dinnerLabel.text = _dinnerText;
+//    }
+//    if(_graveyardText == NULL) {
+//        self.graveyardLabel.hidden = YES;
+//    } else {
+//        self.graveyardLabel.text = _graveyardText;
+//    }
+//}
+-(void)loadSaleColumn:(NSUserDefaults *)saleItem
 {
-    if(_lunchText == NULL) {
-        self.lunchLabel.hidden = YES;
-    } else {
-        self.lunchLabel.text = _lunchText;
-    }
-    if(_dayText == NULL) {
-        self.dayLabel.hidden = YES;
-    } else {
-        self.dayLabel.text = _dayText;
-    }
-    if(_dinnerText == NULL) {
-        self.dinnerLabel.hidden = YES;
-    } else {
-        self.dinnerLabel.text = _dinnerText;
-    }
-    if(_graveyardText == NULL) {
-        self.graveyardLabel.hidden = YES;
-    } else {
-        self.graveyardLabel.text = _graveyardText;
-    }
-}
--(void)loadSaleColumn
-{
-    if(_lastYearSaleText == NULL){
+    NSString * lastYearSale = [saleItem objectForKey:@"goalsale"];
+    if(lastYearSale == NULL){
         self.lastYearSaleLabel.hidden = YES;
+      //  self.winLoseLabel.hidden = YES;
     } else {
-        self.lastYearSaleLabel.text = _lastYearSaleText;
+        self.lastYearSaleLabel.hidden = NO;
+        self.lastYearSaleLabel.font = [UIFont systemFontOfSize:18];
+        self.lastYearSaleLabel.text = lastYearSale;
+        self.lastYearSaleLabel.adjustsFontSizeToFitWidth = YES;
+     //   self.winLoseLabel.hidden = NO;
+     //   self.winLoseLabel.font = [UIFont systemFontOfSize:18];
+     //   self.winLoseLabel.text = winlose;
+     //   self.winLoseLabel.adjustsFontSizeToFitWidth = YES;
     }
 }
 -(void)hideLabels
@@ -141,9 +160,11 @@
     self.tacoBarEndingSoon14.hidden = YES;
     self.tacoBarEndingSoon15.hidden = YES;
 }
--(void)loadTacoBarColumn:(NSString *) itemName
-                 setDate:(NSString *)date
+-(void)loadTacoBarColumn:(NSUserDefaults *)tacoItem
 {
+    NSString * itemName = [tacoItem objectForKey:@"name"];
+    NSString * date = [tacoItem objectForKey:@"date"];
+    
     if ([itemName isEqualToString:@"Steak"]) {
         self.tacoBarEndingSoon1.hidden = NO;
         self.tacoBarEndingSoon1.text = [itemName stringByAppendingString:date];
@@ -235,10 +256,11 @@
         self.tacoBarEndingSoon15.adjustsFontSizeToFitWidth = YES;
     }
 }
--(void)loadDrinkTimeColumn:(NSString *)itemName
-                   setDate:(NSString *)date
-
+-(void)loadDrinkTimeColumn:(NSUserDefaults *)drinkItem
 {
+    NSString * itemName = [drinkItem objectForKey:@"name"];
+    NSString * date = [drinkItem objectForKey:@"date"];
+    
     if ([itemName isEqualToString:@"Coffee"]) {
         self.drinkTimeEndingSoon1.hidden = NO;
         self.drinkTimeEndingSoon1.text = [itemName stringByAppendingString:date];
@@ -272,13 +294,12 @@
 }
 -(void)viewWillAppear:(BOOL)animated
 {
-    [self loadServiceColumn];
-    [self loadSpeedColumn];
-    [self loadSaleColumn];
- //   [self loadTacoBarColumn:_itemName
- //                   setDate:_itemDate];
- //   [self loadDrinkTimeColumn:_itemName
-  //                    setDate:_itemDate];
+   // [self loadServiceColumn:_redTime];
+    [self loadSpeedColumn:_redTime];
+    [self loadSaleColumn:_redTime];
+
+    [self loadTacoBarColumn:_redTime];
+    [self loadDrinkTimeColumn:_redTime];
 }
 - (IBAction)back:(id)sender {
     [self performSegueWithIdentifier:@"back" sender:self];

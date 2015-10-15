@@ -1450,8 +1450,8 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
             [wl setText:@"Lose"];
         }
         
-        if (dailygoal != NULL && dailyactual != NULL && day != NULL) {
-            speeditem = [self saveSpeed:dailygoal setDay:day];
+        if (dailygoal != NULL && dailyactual != NULL && day != NULL && winlose != NULL) {
+            speeditem = [self saveSpeed:dailygoal setDay:day setWin:winlose];
             [self sendtoDisplay];
         }
         
@@ -1502,10 +1502,10 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
             [wl setText:@"Lose"];
             winlose = @"Lose";
         }
-        if(dailylastyearsale != NULL && winlose != NULL && dailyactualsale != NULL && day != NULL)
+        if(dailylastyearsale != NULL && dailyactualsale != NULL && day != NULL)
         {
             NSString * g = [dailylastyearsale  stringValue];
-            saleitem = [self saveSale:g setDay:day setWin:winlose];
+            saleitem = [self saveSale:g setDay:day];
             [self sendtoDisplay];
         }
         
@@ -1583,18 +1583,20 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
     [alert setTag:2];
     [alert show];
 }
--(NSUserDefaults *)saveSpeed:(NSString *)goalspeed setDay:(NSString*)dayspeed
+-(NSUserDefaults *)saveSpeed:(NSString *)goalspeed setDay:(NSString*)dayspeed setWin:(NSString *)win
 {
     NSUserDefaults * item = [NSUserDefaults standardUserDefaults];
-    [item setObject:goalspeed forKey:dayspeed];
+    [item setObject:goalspeed forKey:@"goalspeed"];
+    [item setObject:win forKey:@"win"];
+    [item setObject:dayspeed forKey:@"dayspeed"];
     [item synchronize];
     return item;
 }
--(NSUserDefaults *)saveSale:(NSString *)goalsale setDay:(NSString*)daytime setWin:(NSString *)win
+-(NSUserDefaults *)saveSale:(NSString *)goalsale setDay:(NSString*)daytime
 {
     NSUserDefaults * item = [NSUserDefaults standardUserDefaults];
-    [item setObject:goalsale forKey:daytime];
-    [item setObject:win forKey:daytime];
+    [item setObject:daytime forKey:@"daytime"];
+    [item setObject:goalsale forKey:@"goalsale"];
     [item synchronize];
     return item;
 }
