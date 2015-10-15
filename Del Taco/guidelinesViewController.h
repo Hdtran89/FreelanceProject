@@ -15,6 +15,8 @@
 - (IBAction)loginOrOutAction:(id)sender;
 @property (weak, nonatomic) IBOutlet UIImageView *logo;
 @property (weak, nonatomic) IBOutlet UIImageView *guideline;
+- (IBAction)home:(id)sender;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *homeButton;
 
 
 @end

@@ -115,8 +115,11 @@
     NSNumber * weeklylastyearsale;
     NSNumber * dailyactualsale;
     NSNumber * weeklyactualsale;
+    NSString * winlose;
     bool lunch;
     bool counter;
+    NSUserDefaults * speeditem;
+    NSUserDefaults * saleitem;
     
 }
 @end
@@ -1447,6 +1450,11 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
             [wl setText:@"Lose"];
         }
         
+        if (dailygoal != NULL && dailyactual != NULL && day != NULL) {
+            speeditem = [self saveSpeed:dailygoal setDay:day];
+            [self sendtoDisplay];
+        }
+        
     } else if (isService) {
         //TODO:: SAVE number of transaction 
     } else if (isSales) {
@@ -1489,15 +1497,19 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
         
         if (actualSales <  lastYearSales) {
             [wl setText:@"Win"];
+            winlose = @"Win";
         } else {
             [wl setText:@"Lose"];
+            winlose = @"Lose";
+        }
+        if(dailylastyearsale != NULL && winlose != NULL && dailyactualsale != NULL && day != NULL)
+        {
+            NSString * g = [dailylastyearsale  stringValue];
+            saleitem = [self saveSale:g setDay:day setWin:winlose];
+            [self sendtoDisplay];
         }
         
-        
-        
-        
     }
-    [self sendtoDisplay];
 }
 
 
@@ -1519,7 +1531,10 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
                                        cancelButtonTitle:@"No"
                                        otherButtonTitles:@"Yes", nil];
     [al show];
-    
+    dailygoal = NULL;
+    dailylastyearsale = NULL;
+    winlose = NULL;
+    day = NULL;
 }
 
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -1553,6 +1568,7 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
                 
             }
             else if (isSales){
+                [self performSegueWithIdentifier:@"stat.segue.push.alert" sender:self];
             }
         }
     }
@@ -1560,19 +1576,27 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
 -(void)sendtoDisplay
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
-                                                    message:[NSString stringWithFormat:@"Send to Display"]
+                                                    message:[NSString stringWithFormat:@"Show Display"]
                                                    delegate:self
-                                          cancelButtonTitle:@"Send"
+                                          cancelButtonTitle:@"Show"
                                           otherButtonTitles:nil, nil];
     [alert setTag:2];
     [alert show];
 }
--(void)passDataForward
+-(NSUserDefaults *)saveSpeed:(NSString *)goalspeed setDay:(NSString*)dayspeed
 {
-    //displayScreenViewController * display = [[displayScreenViewController alloc ]init];
-    
-
-
+    NSUserDefaults * item = [NSUserDefaults standardUserDefaults];
+    [item setObject:goalspeed forKey:dayspeed];
+    [item synchronize];
+    return item;
+}
+-(NSUserDefaults *)saveSale:(NSString *)goalsale setDay:(NSString*)daytime setWin:(NSString *)win
+{
+    NSUserDefaults * item = [NSUserDefaults standardUserDefaults];
+    [item setObject:goalsale forKey:daytime];
+    [item setObject:win forKey:daytime];
+    [item synchronize];
+    return item;
 }
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -1581,11 +1605,17 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
     {
         if (isSpeed)
         {
-            display.goalText =  [dailygoal stringValue];
+            display.speedItem = speeditem;
+         //   NSLog(@"goal: %@", dailygoal);
+          //  display.goalText =  [dailygoal stringValue];
         }
         else if (isSales)
         {
-            display.lastYearSaleText = [dailylastyearsale stringValue];
+            display.saleItem = saleitem;
+          //  NSLog(@"win lose: %@", winlose);
+          //  NSLog(@"last year sale: %@", dailylastyearsale);
+          //  display.winLoseText = winlose;
+         //   display.lastYearSaleText = [dailylastyearsale stringValue];
         }
     }
 }

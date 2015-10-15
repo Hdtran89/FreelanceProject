@@ -15,5 +15,7 @@
 @property (nonatomic, weak) IBOutlet UIImageView *imageView;
 
 - (void)view:(UIView*)view setCenter:(CGPoint)centerPoint;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *homeButton;
+- (IBAction)home:(id)sender;
 
 @end

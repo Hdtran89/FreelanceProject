@@ -14,6 +14,8 @@
 
 @property bool isDaily;
 @property bool isQuarterly;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *homeButton;
+- (IBAction)home:(id)sender;
 @property (weak, nonatomic) IBOutlet UIPickerView *weekPicker;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 - (IBAction)segmentSwitch:(id)sender;

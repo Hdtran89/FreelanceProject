@@ -235,4 +235,7 @@
 //    week = [[week stringByAppendingString:@" "] stringByAppendingString:day];
 //    [self.showBtn setTitle:week forState:UIControlStateNormal];
 }
+- (IBAction)home:(id)sender {
+    [self performSegueWithIdentifier:@"clean.modal.segue" sender:self];
+}
 @end

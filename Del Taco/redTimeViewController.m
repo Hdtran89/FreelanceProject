@@ -72,9 +72,49 @@
     NSMutableArray *redTimeLabelsDrinkStation;
     NSMutableArray *redTimeLabelsTacoBar;
     NSMutableArray *drinkStationFields;
-    
+//    NSString * tacoitemname1;
+//    NSString * tacoitemname2;
+//    NSString * tacoitemname3;
+//    NSString * tacoitemname4;
+//    NSString * tacoitemname5;
+//    NSString * tacoitemname6;
+//    NSString * tacoitemname7;
+//    NSString * tacoitemname8;
+//    NSString * tacoitemname9;
+//    NSString * tacoitemname10;
+//    NSString * tacoitemname11;
+//    NSString * tacoitemname12;
+//    NSString * tacoitemname13;
+//    NSString * tacoitemname14;
+//    NSString * tacoitemname15;
+//    NSString * tacodatetime1;
+//    NSString * tacodatetime2;
+//    NSString * tacodatetime3;
+//    NSString * tacodatetime4;
+//    NSString * tacodatetime5;
+//    NSString * tacodatetime6;
+//    NSString * tacodatetime7;
+//    NSString * tacodatetime8;
+//    NSString * tacodatetime9;
+//    NSString * tacodatetime10;
+//    NSString * tacodatetime11;
+//    NSString * tacodatetime12;
+//    NSString * tacodatetime13;
+//    NSString * tacodatetime14;
+//    NSString * tacodatetime15;
+//    NSString * drinkitemname1;
+//    NSString * drinkitemname2;
+//    NSString * drinkitemname3;
+//    NSString * drinkitemname4;
+//    NSString * drinkitemname5;
+//    NSString * drinkdatetime1;
+//    NSString * drinkdatetime2;
+//    NSString * drinkdatetime3;
+//    NSString * drinkdatetime4;
+//    NSString * drinkdatetime5;
     NSString * itemname;
     NSString * datetime;
+    NSUserDefaults * redtimeSave;
     Boolean otherOption;
     
 }
@@ -98,6 +138,7 @@
     [self initializeDrinkAndTacoViews];
     self.prepRedTimeChartItems = @[@"American Cheese", @"Ancho Sauce", @"Bulk Ketchup", @"Butter Blend", @"Cheddar Cheese", @"Chicken Steak", @"Chocolate Syrup", @"Green Sauce", @"Guacamole", @"Hamburger Patties", @"Hamburger Sauce", @"HS and HP Tortillas", @"Jalapeños", @"Pita Bread Gordas", @"Secret Sauce", @"Sour Cream", @"Spicy Jack Cheese", @"Taco Sauce", @"Tomatoes - Sliced/Diced", @"Uncooked Bacon Tiras", @"Uncooked Eggs", @"Bacon Piezas"];
     self.prepRedTimeChartTimes = @[@"30 Days", @"7 Days", @"7 Days", @"3 Months", @"24 Hours", @"72 Hours", @"7 Days", @"3 Days", @"24 Hours", @"Use by Case Date", @"7 Days", @"Walk in: 30 days, Storeroom: 14 days", @"21 Days", @"3 Days", @"7 Days", @"24 hours", @"30 Days", @"7 Days", @"12 Hours", @"7 Days", @"4 Hours", @"10 Days"];
+   
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
     self.window = [[UIWindow alloc] initWithFrame: [UIScreen mainScreen].bounds];
@@ -968,46 +1009,47 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
     int hours =0 ;
     NSString *output;
     if (isTacoBar) {
+        
         switch (textField.tag) {
                 //steak - 1hour
             case 0: {
                 itemname = @"Steak";
-                otherOption = NO;
+            //    otherOption = NO;
                 hours = 1;
                 break;
             }
             case 20: {
                 //newDate = [parsed dateByAddingTimeInterval:secondsIn1Hours];
                 itemname = @"Steak";
-                otherOption = YES;
+            //    otherOption = YES;
                 hours = 1;
                 break;
             }
                 //tacomeat - 2hour
             case 1: {
                 itemname = @"Taco Meat";
-                otherOption = NO;
+            //    otherOption = NO;
                 hours = 2;
                 break;
             }
             case 21: {
                // newDate = [parsed dateByAddingTimeInterval:secondsIn2Hours];
                 itemname = @"Taco Meat";
-                otherOption = YES;
+             //   otherOption = YES;
                 hours = 2;
                 break;
             }
                 //chicken - 3hour
             case 2: {
                 itemname = @"Chicken";
-                otherOption = NO;
+             //   otherOption = NO;
                 hours = 3;
                 break;
             }
             case 22: {
                 //newDate = [parsed dateByAddingTimeInterval:secondsIn3Hours];
                 itemname = @"Chicken";
-                otherOption = YES;
+            //    otherOption = YES;
                 hours = 3;
                 break;
             }
@@ -1016,74 +1058,74 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
                 //veg blend, tomatoes sliced and diced, pico de gallo
             case 3:{
                 itemname = @"Rice";
-                otherOption = NO;
+             //   otherOption = NO;
                 hours = 4;
                 break;
             }
             case 4:{
                 itemname = @"Red Sauce";
-                otherOption = NO;
+             //   otherOption = NO;
                 hours = 4;
                 break;
             }
             case 5:{
                 itemname = @"Green Sauce";
-                otherOption = NO;
+            //    otherOption = NO;
                 hours = 4;
                 break;
             }
             case 6:{
                 itemname = @"Red Chilli Topping";
-                otherOption = NO;
+             //   otherOption = NO;
                 hours = 4;
                 break;
             }
             case 13:{
                 itemname = @"Veg Blend";
-                otherOption = YES;
+            //    otherOption = YES;
                 hours = 4;
                 break;
             }
             case 14:{
                 itemname = @"Tomatoes - Sliced";
-                otherOption = YES;
+             //   otherOption = YES;
                 hours = 4;
                 break;
             }
             case 15:{
                 itemname = @"Tomatoes - Diced";
-                otherOption = YES;
+             //   otherOption = YES;
                 hours = 4;
                 break;
             }
             case 16:{
                 itemname = @"Pico De Gallo Salsa";
-                otherOption = YES;
+             //   otherOption = YES;
                 hours = 4;
                 break;
             }
             case 23:{
                 itemname = @"Rice";
-                otherOption = YES;
+             //   otherOption = YES;
                 hours = 4;
                 break;
             }
             case 24:{
                 itemname = @"Red Sauce";
-                otherOption = YES;
+            //    otherOption = YES;
                 hours = 4;
                 break;
             }
             case 25:{
                 itemname = @"Green Sauce";
-                otherOption = YES;
+             //   otherOption = YES;
                 hours = 4;
                 break;
             }
             case 26: {
                 //newDate = [parsed dateByAddingTimeInterval:secondsIn4Hours];
                 itemname = @"Red Chilli Topping";
-                otherOption = YES;
+            //    otherOption = YES;
                 hours = 4;
                 break;
             }
@@ -1093,43 +1135,43 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
             //nacho cheese
             case 7: {
                 itemname = @"Turkey";
-                otherOption = NO;
+             //   otherOption = NO;
                 hours = 8;
                 break;
             }
             case 8: {
                 itemname = @"Black Beans";
-                otherOption = NO;
+             //   otherOption = NO;
                 hours = 8;
                 break;
             }
             case 9:{
                 itemname = @"Pinto Beans";
-                otherOption = NO;
+             //   otherOption = NO;
                 hours = 8;
                 break;
             }
             case 10:{
                 itemname = @"Nacho Cheese";
-                otherOption = NO;
+             //   otherOption = NO;
                 hours = 8;
                 break;
             }
             case 27:{
                 itemname = @"Black Beans";
-                otherOption = YES;
+             //   otherOption = YES;
                 hours = 8;
                 break;
             }
             case 28:{
                 itemname = @"Pinto Beans";
-                otherOption = YES;
+             //   otherOption = YES;
                 hours = 8;
                 break;
             }
             case 29:{
                 itemname = @"Nacho Cheese";
-                otherOption = YES;
+             //   otherOption = YES;
                 hours = 8;
                 break;
             }
@@ -1146,7 +1188,7 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
             //coffee 2 hours
             case 0:{
                 itemname = @"Coffee";
-                otherOption = NO;
+             //   otherOption = NO;
                 hours = 2;
                 break;
             }
@@ -1154,14 +1196,14 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
             //strawberries 4 hours
             case 1:{
                 itemname = @"Lemons";
-                otherOption = NO;
+            //    otherOption = NO;
                 hours = 4;
                 break;
             }
             case 2:
             {
                 itemname = @"Strawberries";
-                otherOption = NO;
+             //   otherOption = NO;
                 hours = 4;
                 break;
             }
@@ -1169,20 +1211,20 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
             //sweet tea 8 hours
             case 3:{
                 itemname = @"Iced Tea";
-                otherOption = NO;
+              //  otherOption = NO;
                 hours = 8;
                 break;
             }
             case 4:{
                 itemname = @"Sweet Tea";
-                otherOption = NO;
+             //   otherOption = NO;
                 hours = 8;
                 break;
             }
             //chocolate syrup 72 hours
             case 5:{
                 itemname = @"Chocolate Syrup";
-                otherOption = NO;
+             //   otherOption = NO;
                 hours = 72;
                 break;
             }
@@ -1191,13 +1233,13 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
             // 24 hours
             case 6:{
                 itemname = @"Capuccino";
-                otherOption = NO;
+            //    otherOption = NO;
                 hours = 24;
                 break;
             }
             case 7:{
                 itemname = @"Shake Mix";
-                otherOption = NO;
+             //   otherOption = NO;
                 hours = 24;
                 break;
             }
@@ -1216,11 +1258,7 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
     newDate = [df dateFromString:[df stringFromDate:newDate]];
     [self scheduleNotificationForDate:newDate];
     
-    //Save to the Core Data
-    datetime = output;
-    if(datetime != NULL){
-        [self sendtoDisplay];
-    }
+
     
     [self showAlertForRedTimeInput:output];
     
@@ -1244,8 +1282,22 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
         }
     }
     
-    //TODO: OPEN UIALERTVIEW
-    
+    if(isDrinkStation)
+    {
+        datetime = output;
+        redtimeSave = [self saveTacoBar:itemname setDate:datetime];
+        if(datetime != NULL && itemname != NULL){
+            [self sendtoDisplay];
+        }
+    }
+    else if (isTacoBar)
+    {
+        datetime = output;
+        redtimeSave = [self saveTacoBar:itemname setDate:datetime];
+        if(datetime != NULL && itemname != NULL){
+            [self sendtoDisplay];
+        }
+    }
 }
 
 
@@ -1338,10 +1390,8 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
             if (t) [t setText:@""];
         }
     }
-    
-    
-    
-    
+    datetime = NULL;
+    itemname = NULL;
 }
 
 - (void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
@@ -1372,9 +1422,9 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
 -(void)sendtoDisplay
 {
     UIAlertView *alertdisplay = [[UIAlertView alloc] initWithTitle:@""
-                                                    message:[NSString stringWithFormat:@"Send to Display"]
+                                                    message:[NSString stringWithFormat:@"Show Display Screen"]
                                                    delegate:self
-                                          cancelButtonTitle:@"Send"
+                                          cancelButtonTitle:@"Show"
                                           otherButtonTitles:nil, nil];
     [alertdisplay setTag:2];
     [alertdisplay show];
@@ -1389,6 +1439,14 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
         }
     }
 }
+-(NSUserDefaults *)saveTacoBar:(NSString *)name setDate:(NSString *)date
+{
+    NSUserDefaults * item = [NSUserDefaults standardUserDefaults];
+    [item setObject:date forKey:name];
+    [item synchronize];
+    return item;
+}
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     displayScreenViewController * display = [segue destinationViewController];
@@ -1396,13 +1454,11 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
     {
         if(isTacoBar)
         {
-            display.itemName = itemname;
-            display.itemDate = datetime;
+            display.redTime = redtimeSave;
         }
         else if(isDrinkStation)
         {
-            display.itemName = itemname;
-            display.itemDate = datetime;
+            display.redTime = redtimeSave;
         }
        
     }

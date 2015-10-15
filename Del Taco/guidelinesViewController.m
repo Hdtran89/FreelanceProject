@@ -7,7 +7,7 @@
 //
 
 #import "guidelinesViewController.h"
-
+#import "displayScreenViewController.h"
 @interface guidelinesViewController ()
     
 @end
@@ -49,7 +49,6 @@
 }
 
 
-
 - (void) setUpLoginButton {
     if ([Utils getLoggedIn]) [self.loginOrOutButton setTitle:@"Log out"];
     else [self.loginOrOutButton setTitle:@"Log in"];
@@ -71,4 +70,6 @@
     
     
 }
+- (IBAction)home:(id)sender {
+   [self performSegueWithIdentifier:@"guide.push.segue" sender:self];}
 @end

@@ -121,4 +121,7 @@
 }
 */
 
+- (IBAction)home:(id)sender {
+    [self performSegueWithIdentifier:@"deployment.modal.segue" sender:self];
+}
 @end
