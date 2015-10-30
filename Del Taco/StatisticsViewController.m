@@ -1608,16 +1608,10 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
         if (isSpeed)
         {
             display.speedItem = speeditem;
-         //   NSLog(@"goal: %@", dailygoal);
-          //  display.goalText =  [dailygoal stringValue];
         }
         else if (isSales)
         {
             display.saleItem = saleitem;
-          //  NSLog(@"win lose: %@", winlose);
-          //  NSLog(@"last year sale: %@", dailylastyearsale);
-          //  display.winLoseText = winlose;
-         //   display.lastYearSaleText = [dailylastyearsale stringValue];
         }
     }
 }

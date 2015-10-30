@@ -113,7 +113,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Home" id="1DY-P6-0TE">
                             <connections>
                                 <action selector="home:" destination="NgD-Xw-qzn" id="Apn-Oi-X1S"/>
-                                <segue destination="NQ7-MM-Q4z" kind="modal" identifier="clean.modal.segue" id="UfN-TY-dga"/>
+                                <segue destination="NQ7-MM-Q4z" kind="push" identifier="clean.modal.segue" id="UfN-TY-dga"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -291,6 +291,7 @@
                                         <barButtonItem key="rightBarButtonItem" title="Home" id="0Bd-qh-l6u">
                                             <connections>
                                                 <action selector="home:" destination="TtU-LV-A7v" id="i5G-86-IMp"/>
+                                                <segue destination="NQ7-MM-Q4z" kind="modal" identifier="guide.push.segue" id="JPz-G0-dgG"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -703,7 +704,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VOJ-Zr-uX1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2675" y="44"/>
+            <point key="canvasLocation" x="2501" y="-1032"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="DR4-I5-Lhp">
@@ -822,6 +823,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Eb0-qs-4dT"/>
-        <segue reference="pd3-Uk-p8a"/>
+        <segue reference="JPz-G0-dgG"/>
     </inferredMetricsTieBreakers>
 </document>

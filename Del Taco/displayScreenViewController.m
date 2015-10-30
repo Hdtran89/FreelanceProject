@@ -21,13 +21,6 @@
 
 @implementation displayScreenViewController
 
-//@synthesize goalText = _goalText;
-//@synthesize winLoseText = _winLoseText;
-//@synthesize lunchText = _lunchText;
-//@synthesize dayText = _dayText;
-//@synthesize dinnerText =_dinnerText;
-//@synthesize graveyardText = _graveyardText;
-//@synthesize lastYearSaleText = _lastYearSaleText;
 @synthesize redTimeItems = _redTimeItems;
 @synthesize redTime = _redTime;
 

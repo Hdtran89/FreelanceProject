@@ -49,14 +49,6 @@
 
 @property (strong, nonatomic) NSDictionary * redTimeItems;
 
-//@property (strong, nonatomic) NSString * goalText;
-//@property (strong, nonatomic) NSString * winLoseText;
-//@property (strong, nonatomic) NSString * lunchText;
-//@property (strong, nonatomic) NSString * dayText;
-//@property (strong, nonatomic) NSString * dinnerText;
-//@property (strong, nonatomic) NSString * graveyardText;
-//@property (strong, nonatomic) NSString * lastYearSaleText;
-
 @property (strong, nonatomic) NSUserDefaults * redTime;
 @property (strong, nonatomic) NSUserDefaults * saleItem;
 @property (strong, nonatomic) NSUserDefaults * speedItem;
