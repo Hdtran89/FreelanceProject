@@ -1242,22 +1242,22 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
         }
     }
     
-    if(isDrinkStation)
-    {
-        datetime = output;
-        redtimeSave = [self saveTacoBar:itemname setDate:datetime];
-        if(datetime != NULL && itemname != NULL){
-            [self sendtoDisplay];
-        }
-    }
-    else if (isTacoBar)
-    {
-        datetime = output;
-        redtimeSave = [self saveTacoBar:itemname setDate:datetime];
-        if(datetime != NULL && itemname != NULL){
-            [self sendtoDisplay];
-        }
-    }
+//    if(isDrinkStation)
+//    {
+//        datetime = output;
+////        redtimeSave = [self saveTacoBar:itemname setDate:datetime];
+////        if(datetime != NULL && itemname != NULL){
+////            [self sendtoDisplay];
+////        }
+//    }
+//    else if (isTacoBar)
+//    {
+//        datetime = output;
+////        redtimeSave = [self saveTacoBar:itemname setDate:datetime];
+////        if(datetime != NULL && itemname != NULL){
+////            [self sendtoDisplay];
+////        }
+//    }
 }
 
 
@@ -1379,50 +1379,50 @@ NSInteger static compareViewsByOrigin(id sp1, id sp2, void *context) {
     
 }
 
--(void)sendtoDisplay
-{
-    UIAlertView *alertdisplay = [[UIAlertView alloc] initWithTitle:@""
-                                                    message:[NSString stringWithFormat:@"Show Display Screen"]
-                                                   delegate:self
-                                          cancelButtonTitle:@"Show"
-                                          otherButtonTitles:nil, nil];
-    [alertdisplay setTag:2];
-    [alertdisplay show];
-}
+//-(void)sendtoDisplay
+//{
+//    UIAlertView *alertdisplay = [[UIAlertView alloc] initWithTitle:@""
+//                                                    message:[NSString stringWithFormat:@"Show Display Screen"]
+//                                                   delegate:self
+//                                          cancelButtonTitle:@"Show"
+//                                          otherButtonTitles:nil, nil];
+//    [alertdisplay setTag:2];
+//    [alertdisplay show];
+//}
 
--(void )alertView:(UIAlertView *) alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{   if([alertView tag] == 2)
-    {
-        if(buttonIndex == 0)
-        {
-            [self performSegueWithIdentifier:@"red.segue.push.alert" sender:self];
-        }
-    }
-}
--(NSUserDefaults *)saveTacoBar:(NSString *)name
-                       setDate:(NSString *)date
-{
-    NSUserDefaults * item = [NSUserDefaults standardUserDefaults];
-    [item setObject:name forKey:@"name"];
-    [item setObject:date forKey:@"date"];
-    [item synchronize];
-    return item;
-}
+//-(void )alertView:(UIAlertView *) alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+//{   if([alertView tag] == 2)
+//    {
+//        if(buttonIndex == 0)
+//        {
+//            [self performSegueWithIdentifier:@"red.segue.push.alert" sender:self];
+//        }
+//    }
+//}
+//-(NSUserDefaults *)saveTacoBar:(NSString *)name
+//                       setDate:(NSString *)date
+//{
+//    NSUserDefaults * item = [NSUserDefaults standardUserDefaults];
+//    [item setObject:name forKey:@"name"];
+//    [item setObject:date forKey:@"date"];
+//    [item synchronize];
+//    return item;
+//}
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    displayScreenViewController * display = [segue destinationViewController];
-    if([[segue identifier] isEqualToString:@"red.segue.push.alert"])
-    {
-        if(isTacoBar)
-        {
-            display.redTime = redtimeSave;
-        }
-        else if(isDrinkStation)
-        {
-            display.redTime = redtimeSave;
-        }
-       
-    }
-}
+//-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+//{
+//    displayScreenViewController * display = [segue destinationViewController];
+//    if([[segue identifier] isEqualToString:@"red.segue.push.alert"])
+//    {
+//        if(isTacoBar)
+//        {
+//            display.redTime = redtimeSave;
+//        }
+//        else if(isDrinkStation)
+//        {
+//            display.redTime = redtimeSave;
+//        }
+//       
+//    }
+//}
 @end

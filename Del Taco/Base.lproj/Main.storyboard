@@ -33,16 +33,8 @@
                             <constraint firstItem="9Cn-zZ-BxJ" firstAttribute="top" secondItem="PBo-Cp-F0z" secondAttribute="bottom" id="V15-RN-9M8"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Deployment" id="cB1-yz-891">
-                        <barButtonItem key="rightBarButtonItem" title="Home" id="BnH-na-K3S">
-                            <connections>
-                                <action selector="home:" destination="iPP-KY-R3c" id="iSS-9T-Ddg"/>
-                                <segue destination="NQ7-MM-Q4z" kind="modal" identifier="deployment.modal.segue" id="Avm-1J-iyA"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Deployment" id="cB1-yz-891"/>
                     <connections>
-                        <outlet property="homeButton" destination="BnH-na-K3S" id="0vV-ik-mTX"/>
                         <outlet property="imageView" destination="PBo-Cp-F0z" id="ep5-wt-1I2"/>
                     </connections>
                 </viewController>
@@ -109,17 +101,9 @@
                             <constraint firstAttribute="centerX" secondItem="uBt-lm-VqO" secondAttribute="centerX" id="x8v-Lw-CVJ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Cleaning Calendar" id="zn9-iT-CNp">
-                        <barButtonItem key="rightBarButtonItem" title="Home" id="1DY-P6-0TE">
-                            <connections>
-                                <action selector="home:" destination="NgD-Xw-qzn" id="Apn-Oi-X1S"/>
-                                <segue destination="NQ7-MM-Q4z" kind="push" identifier="clean.modal.segue" id="UfN-TY-dga"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Cleaning Calendar" id="zn9-iT-CNp"/>
                     <connections>
                         <outlet property="cleaningTasks" destination="QnN-J8-T6j" id="g4Q-mq-QUE"/>
-                        <outlet property="homeButton" destination="1DY-P6-0TE" id="Yox-yh-PCh"/>
                         <outlet property="segmentedControl" destination="PSx-U5-YBz" id="va7-Bk-9SW"/>
                         <outlet property="showBtn" destination="OrU-qx-hxy" id="a6C-Pz-3MN"/>
                         <outlet property="weekPicker" destination="uBt-lm-VqO" id="6zz-8H-Eqg"/>
@@ -207,7 +191,6 @@
                         <outlet property="refreshBtn" destination="N3N-Oo-RMc" id="Byi-j0-967"/>
                         <outlet property="segmentedControl" destination="BTz-EF-beo" id="krA-lx-VQH"/>
                         <outlet property="table" destination="Hcv-IK-bhO" id="eFR-pb-WlC"/>
-                        <segue destination="NQ7-MM-Q4z" kind="push" identifier="red.segue.push.alert" id="NvS-Cy-Bqa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vIw-na-7Ck" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -260,7 +243,6 @@
                     <connections>
                         <outlet property="reportButton" destination="EHq-PL-LsK" id="EeC-ge-Bzy"/>
                         <outlet property="segmentedControl" destination="hpJ-rK-Jzh" id="Iy3-lT-fnc"/>
-                        <segue destination="NQ7-MM-Q4z" kind="push" identifier="stat.segue.push.alert" id="pd3-Uk-p8a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oAu-l2-4Rs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -286,12 +268,6 @@
                                         <barButtonItem key="leftBarButtonItem" title="Login" id="crA-40-RyX">
                                             <connections>
                                                 <action selector="loginOrOutAction:" destination="TtU-LV-A7v" id="vao-bs-Qnb"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Home" id="0Bd-qh-l6u">
-                                            <connections>
-                                                <action selector="home:" destination="TtU-LV-A7v" id="i5G-86-IMp"/>
-                                                <segue destination="NQ7-MM-Q4z" kind="modal" identifier="guide.push.segue" id="JPz-G0-dgG"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -329,7 +305,6 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="guideline" destination="UAx-nr-aSq" id="DNc-ih-U5k"/>
-                        <outlet property="homeButton" destination="0Bd-qh-l6u" id="Isd-DR-3mL"/>
                         <outlet property="loginOrOutButton" destination="crA-40-RyX" id="4UH-C0-Fbo"/>
                         <outlet property="logo" destination="WSy-T7-zdT" id="D5C-Tz-6Rp"/>
                         <segue destination="r7b-F3-q5I" kind="presentation" identifier="guidelinesToLoginSegue" modalTransitionStyle="flipHorizontal" id="5JR-H8-4wP"/>
@@ -663,7 +638,6 @@
                         <barButtonItem key="rightBarButtonItem" title="Back" id="kit-nx-0pJ">
                             <connections>
                                 <action selector="back:" destination="NQ7-MM-Q4z" id="CaP-Gc-9UV"/>
-                                <segue destination="qnF-AQ-DAH" kind="modal" identifier="back" id="Eb0-qs-4dT"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -822,7 +796,6 @@
         <image name="statisticsTab" width="60" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Eb0-qs-4dT"/>
-        <segue reference="JPz-G0-dgG"/>
+        <segue reference="xbB-IP-E8a"/>
     </inferredMetricsTieBreakers>
 </document>
